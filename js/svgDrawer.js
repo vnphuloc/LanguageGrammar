@@ -5,7 +5,7 @@ class SvgDrawer {
     }
 
     clearSVG() {
-        const paths = this.svgCanvas.querySelectorAll('path:not([d="M 0 0 L 10 5 L 0 10 z"])');
+        const paths = this.svgCanvas.querySelectorAll('path:not([d="M 0 1.5 L 10 5 L 0 8.5 z"])');
         paths.forEach(p => p.remove());
     }
 
@@ -44,7 +44,8 @@ class SvgDrawer {
             const startY = startRect.bottom - wrapperRect.top;
 
             const endX = endRect.left + (endRect.width / 2) - wrapperRect.left;
-            const endY = endRect.top - wrapperRect.top;
+            // Trừ 4px để mũi tên dính vừa đẹp vào viền khối, không bị lòi nét
+            const endY = endRect.top - wrapperRect.top - 4;
 
             const diffY = Math.abs(endY - startY);
             
