@@ -5,10 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Multi-Language Grammar Visualizer | Syntax Matrix</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Liên kết CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+    <!-- Bảng Settings Góc Phải -->
+    <div class="settings-wrapper">
+        <button id="settingsToggleBtn" class="settings-btn" title="Cài đặt">⚙️</button>
+        <div id="settingsPanel" class="settings-panel">
+            <div class="setting-item">
+                <label for="dimSlider">Độ mờ khi Hover:</label>
+                <input type="range" id="dimSlider" min="0" max="1" step="0.1" value="0.25">
+            </div>
+            <div class="setting-item">
+                <label for="phoneticToggle">Hiện phiên âm:</label>
+                <label class="switch">
+                    <input type="checkbox" id="phoneticToggle">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+    </div>
 
     <header>
         <h1>Syntax Matrix</h1>
@@ -24,9 +41,10 @@
     <div class="grammar-board-wrapper" id="board-wrapper">
         <svg id="svg-canvas">
             <defs>
-                <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
-                    markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                    <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent-color)" />
+                <!-- Đã chỉnh refX và path để mũi tên dính chặt, không bị lòi nét line -->
+                <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+                    markerWidth="7" markerHeight="7" orient="auto">
+                    <path d="M 0 1.5 L 10 5 L 0 8.5 z" fill="var(--accent-color)" />
                 </marker>
             </defs>
         </svg>
@@ -41,7 +59,7 @@
         <span>Rê chuột (hover) vào BẤT CỨ từ nào để xem sự dịch chuyển vị trí tương ứng ở các ngôn ngữ khác.</span>
     </div>
 
-    <!-- Modal cho phiên âm và giải thích -->
+    <!-- Modal cho giải thích -->
     <div id="explanationModal" class="modal-overlay">
         <div class="modal-content">
             <button id="closeModal" class="close-btn">&times;</button>
@@ -57,7 +75,6 @@
         </div>
     </div>
 
-    <!-- Liên kết JS -->
     <script src="js/svgDrawer.js"></script>
     <script src="js/app.js"></script>
 </body>
