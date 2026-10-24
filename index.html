@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syntax Matrix - Trục Ngữ Pháp Đa Ngôn Ngữ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="app-header">
+        <h1>Syntax Matrix</h1>
+        <p>So sánh cấu trúc câu: Anh (SVO) - Việt (SVO) - Trung (S-Time-VO) - Nhật (SOV)</p>
+    </header>
+
+    <!-- Controls -->
+    <section class="controls">
+        <label for="contextSelect">Chọn ngữ cảnh ngữ pháp:</label>
+        <select id="contextSelect">
+            <option value="" disabled selected>Đang tải dữ liệu...</option>
+        </select>
+    </section>
+
+    <!-- Main Workspace -->
+    <main class="matrix-container" id="matrixContainer">
+        <!-- SVG dùng để vẽ đường nối -->
+        <svg id="svgCanvas" class="svg-canvas">
+            <defs>
+                <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+                refX="9" refY="3.5" orient="auto">
+                  <polygon points="0 0, 10 3.5, 0 7" fill="#005F73" />
+                </marker>
+            </defs>
+        </svg>
+
+        <!-- Nơi chứa các câu của 4 ngôn ngữ -->
+        <div id="sentencesWrapper" class="sentences-wrapper">
+            <!-- Render động bởi app.js -->
+        </div>
+    </main>
+
+    <!-- Modal Giải thích ngữ pháp -->
+    <div id="explanationModal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="closeModal" class="close-btn">&times;</button>
+            <div class="modal-header">
+                <span id="modalLang" class="modal-lang-badge"></span>
+                <span id="modalTagLabel" class="modal-tag-badge"></span>
+            </div>
+            <h2 id="modalWord" class="modal-word"></h2>
+            <p id="modalPhonetic" class="modal-phonetic"></p>
+            <div class="modal-body">
+                <p id="modalExplanation" class="modal-explanation-text"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/svgDrawer.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

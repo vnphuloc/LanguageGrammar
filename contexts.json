@@ -1,0 +1,374 @@
+[
+  {
+    "id": "c1",
+    "title": "1. Quá khứ đơn (Past Simple) - Trật tự cơ bản",
+    "languages": {
+      "en": [
+        { "tagId": "subj", "label": "S", "text": "I", "phonetic": "/aɪ/", "explanation": "Chủ ngữ (Đại từ nhân xưng ngôi thứ nhất)." },
+        { "tagId": "verb", "label": "V", "text": "ate", "phonetic": "/eɪt/", "explanation": "Động từ 'eat' chia ở quá khứ bất quy tắc. Tiếng Anh biến đổi hình thái từ thay vì thêm phụ từ." },
+        { "tagId": "obj", "label": "O", "text": "an apple", "phonetic": "/ən ˈæp.əl/", "explanation": "Tân ngữ trực tiếp, theo ngay sau động từ (SVO)." },
+        { "tagId": "time", "label": "Time", "text": "yesterday", "phonetic": "/ˈjes.tɚ.deɪ/", "explanation": "Trạng từ chỉ thời gian, thường đặt cuối câu trong tiếng Anh." }
+      ],
+      "vi": [
+        { "tagId": "subj", "label": "S", "text": "Tôi", "phonetic": "/toi/", "explanation": "Chủ ngữ." },
+        { "tagId": "aux", "label": "Aux", "text": "đã", "phonetic": "/da/", "explanation": "Trợ từ chỉ thì quá khứ. Tiếng Việt không biến đổi động từ mà dùng từ chỉ thời gian đứng trước." },
+        { "tagId": "verb", "label": "V", "text": "ăn", "phonetic": "/an/", "explanation": "Động từ chính, giữ nguyên thể." },
+        { "tagId": "obj", "label": "O", "text": "một quả táo", "phonetic": "/mot qua tao/", "explanation": "Tân ngữ trực tiếp." },
+        { "tagId": "time", "label": "Time", "text": "hôm qua", "phonetic": "/hom qua/", "explanation": "Trạng ngữ chỉ thời gian, đứng cuối hoặc đầu câu." }
+      ],
+      "zh": [
+        { "tagId": "subj", "label": "S", "text": "我", "phonetic": "wǒ", "explanation": "Chủ ngữ." },
+        { "tagId": "time", "label": "Time", "text": "昨天", "phonetic": "zuó tiān", "explanation": "Từ chỉ thời gian. Tiếng Trung thường đặt Thời gian NGAY SAU chủ ngữ (S - Time - V - O)." },
+        { "tagId": "verb", "label": "V", "text": "吃", "phonetic": "chī", "explanation": "Động từ chính." },
+        { "tagId": "aux", "label": "Aux", "text": "了", "phonetic": "le", "explanation": "Trợ từ động thái '了' đứng sau động từ biểu thị hành động đã hoàn thành." },
+        { "tagId": "obj", "label": "O", "text": "一个苹果", "phonetic": "yí ge píng guǒ", "explanation": "Tân ngữ (Số từ + Lượng từ + Danh từ)." }
+      ],
+      "ja": [
+        { "tagId": "subj", "label": "S", "text": "私は", "phonetic": "watashi wa", "explanation": "Chủ ngữ + Trợ từ chủ đề 'wa'." },
+        { "tagId": "time", "label": "Time", "text": "昨日", "phonetic": "kinō", "explanation": "Từ chỉ thời gian." },
+        { "tagId": "obj", "label": "O", "text": "りんごを", "phonetic": "ringo o", "explanation": "Tân ngữ + Trợ từ tân ngữ 'o'. Đặt TRƯỚC động từ." },
+        { "tagId": "verb", "label": "V", "text": "食べました", "phonetic": "tabemashita", "explanation": "Động từ chia ở thể quá khứ lịch sự. Tiếng Nhật ĐỘNG TỪ LUÔN ĐỨNG CUỐI CÂU (SOV)." }
+      ]
+    }
+  },
+  {
+    "id": "c2",
+    "title": "2. Tương lai gần (Be going to) - Dự định",
+    "languages": {
+      "en": [
+        { "tagId": "subj", "label": "S", "text": "She", "phonetic": "/ʃiː/", "explanation": "Chủ ngữ." },
+        { "tagId": "aux", "label": "Aux", "text": "is going to", "phonetic": "/ɪz ˈɡoʊ.ɪŋ tu/", "explanation": "Cấu trúc 'be going to' diễn tả kế hoạch, dự định sắp xảy ra." },
+        { "tagId": "verb", "label": "V", "text": "buy", "phonetic": "/baɪ/", "explanation": "Động từ chính dạng nguyên thể." },
+        { "tagId": "obj", "label": "O", "text": "a car", "phonetic": "/ə kɑːr/", "explanation": "Tân ngữ." }
+      ],
+      "vi": [
+        { "tagId": "subj", "label": "S", "text": "Cô ấy", "phonetic": "/ko ay/", "explanation": "Chủ ngữ." },
+        { "tagId": "aux", "label": "Aux", "text": "sắp", "phonetic": "/sap/", "explanation": "Phó từ chỉ tương lai gần / dự định chắc chắn." },
+        { "tagId": "verb", "label": "V", "text": "mua", "phonetic": "/mua/", "explanation": "Động từ chính." },
+        { "tagId": "obj", "label": "O", "text": "một chiếc xe hơi", "phonetic": "/mot chiec xe hoi/", "explanation": "Tân ngữ." }
+      ],
+      "zh": [
+        { "tagId": "subj", "label": "S", "text": "她", "phonetic": "tā", "explanation": "Chủ ngữ." },
+        { "tagId": "aux", "label": "Aux", "text": "打算", "phonetic": "dǎ suàn", "explanation": "Động từ năng nguyện 'đả toán' (dự định)." },
+        { "tagId": "verb", "label": "V", "text": "买", "phonetic": "mǎi", "explanation": "Động từ chính." },
+        { "tagId": "obj", "label": "O", "text": "一辆车", "phonetic": "yí liàng chē", "explanation": "Tân ngữ." }
+      ],
+      "ja": [
+        { "tagId": "subj", "label": "S", "text": "彼女は", "phonetic": "kanojo wa", "explanation": "Chủ ngữ." },
+        { "tagId": "obj", "label": "O", "text": "車を", "phonetic": "kuruma o", "explanation": "Tân ngữ." },
+        { "tagId": "verb", "label": "V", "text": "買う", "phonetic": "kau", "explanation": "Động từ dạng từ điển." },
+        { "tagId": "aux", "label": "Aux", "text": "つもりです", "phonetic": "tsumori desu", "explanation": "Cấu trúc 'tsumori' biểu thị ý định, đứng cuối câu." }
+      ]
+    }
+  },
+  {
+    "id": "c3",
+    "title": "3. Hành động tại địa điểm (Vị trí trạng ngữ)",
+    "languages": {
+      "en": [
+        { "tagId": "subj", "label": "S", "text": "We", "phonetic": "/wiː/", "explanation": "Chủ ngữ." },
+        { "tagId": "verb", "label": "V", "text": "studied", "phonetic": "/ˈstʌd.id/", "explanation": "Động từ chính chia quá khứ." },
+        { "tagId": "obj", "label": "O", "text": "math", "phonetic": "/mæθ/", "explanation": "Tân ngữ." },
+        { "tagId": "place", "label": "Place", "text": "at the library", "phonetic": "/ət ðə ˈlaɪ.brer.i/", "explanation": "Cụm giới từ chỉ địa điểm, thường đứng SAU tân ngữ trong Tiếng Anh." }
+      ],
+      "vi": [
+        { "tagId": "subj", "label": "S", "text": "Chúng tôi", "phonetic": "/chung toi/", "explanation": "Chủ ngữ." },
+        { "tagId": "aux", "label": "Aux", "text": "đã", "phonetic": "/da/", "explanation": "Chỉ quá khứ." },
+        { "tagId": "verb", "label": "V", "text": "học", "phonetic": "/hoc/", "explanation": "Động từ chính." },
+        { "tagId": "obj", "label": "O", "text": "toán", "phonetic": "/toan/", "explanation": "Tân ngữ." },
+        { "tagId": "place", "label": "Place", "text": "ở thư viện", "phonetic": "/o thu vien/", "explanation": "Trạng ngữ chỉ địa điểm, đứng cuối câu." }
+      ],
+      "zh": [
+        { "tagId": "subj", "label": "S", "text": "我们", "phonetic": "wǒ men", "explanation": "Chủ ngữ." },
+        { "tagId": "place", "label": "Place", "text": "在图书馆", "phonetic": "zài tú shū guǎn", "explanation": "Giới từ '在' (tại) + Địa điểm. Trong tiếng Trung, cụm ĐỊA ĐIỂM LUÔN ĐỨNG TRƯỚC ĐỘNG TỪ." },
+        { "tagId": "verb", "label": "V", "text": "学习", "phonetic": "xué xí", "explanation": "Động từ." },
+        { "tagId": "aux", "label": "Aux", "text": "了", "phonetic": "le", "explanation": "Trợ từ hoàn thành." },
+        { "tagId": "obj", "label": "O", "text": "数学", "phonetic": "shù xué", "explanation": "Tân ngữ." }
+      ],
+      "ja": [
+        { "tagId": "subj", "label": "S", "text": "私たちは", "phonetic": "watashitachi wa", "explanation": "Chủ ngữ." },
+        { "tagId": "place", "label": "Place", "text": "図書館で", "phonetic": "toshokan de", "explanation": "Địa điểm + trợ từ 'de' (nơi xảy ra hành động)." },
+        { "tagId": "obj", "label": "O", "text": "数学を", "phonetic": "sūgaku o", "explanation": "Tân ngữ." },
+        { "tagId": "verb", "label": "V", "text": "勉強しました", "phonetic": "benkyō shimashita", "explanation": "Động từ cuối câu." }
+      ]
+    }
+  },
+  {
+    "id": "c4",
+    "title": "4. Sự hối hận (Should have + V3)",
+    "languages": {
+      "en": [
+        { "tagId": "subj", "label": "S", "text": "You", "phonetic": "/juː/", "explanation": "Chủ ngữ." },
+        { "tagId": "modal", "label": "Modal", "text": "should have", "phonetic": "/ʃʊd hæv/", "explanation": "Động từ khuyết thiếu quá khứ, diễn tả lẽ ra nên làm nhưng đã không làm." },
+        { "tagId": "verb", "label": "V", "text": "told", "phonetic": "/toʊld/", "explanation": "Động từ phân từ 2 (V3)." },
+        { "tagId": "obj", "label": "O", "text": "me", "phonetic": "/miː/", "explanation": "Tân ngữ." }
+      ],
+      "vi": [
+        { "tagId": "subj", "label": "S", "text": "Bạn", "phonetic": "/ban/", "explanation": "Chủ ngữ." },
+        { "tagId": "modal", "label": "Modal", "text": "đáng lẽ ra nên", "phonetic": "/dang le ra nen/", "explanation": "Cấu trúc biểu thị sự hối tiếc / trách móc trong tiếng Việt." },
+        { "tagId": "verb", "label": "V", "text": "nói", "phonetic": "/noi/", "explanation": "Động từ." },
+        { "tagId": "place", "label": "Prep", "text": "với", "phonetic": "/voi/", "explanation": "Giới từ." },
+        { "tagId": "obj", "label": "O", "text": "tôi", "phonetic": "/toi/", "explanation": "Tân ngữ." }
+      ],
+      "zh": [
+        { "tagId": "subj", "label": "S", "text": "你", "phonetic": "nǐ", "explanation": "Chủ ngữ." },
+        { "tagId": "modal", "label": "Modal", "text": "本应该", "phonetic": "běn yīng gāi", "explanation": "本应该 (bản ưng cai) - Đáng lẽ ra nên." },
+        { "tagId": "verb", "label": "V", "text": "告诉", "phonetic": "gào sù", "explanation": "Động từ 'nói cho biết'." },
+        { "tagId": "obj", "label": "O", "text": "我", "phonetic": "wǒ", "explanation": "Tân ngữ." }
+      ],
+      "ja": [
+        { "tagId": "subj", "label": "S", "text": "あなたは", "phonetic": "anata wa", "explanation": "Chủ ngữ." },
+        { "tagId": "obj", "label": "O", "text": "私に", "phonetic": "watashi ni", "explanation": "Tân ngữ (với tôi)." },
+        { "tagId": "verb", "label": "V", "text": "言う", "phonetic": "iu", "explanation": "Động từ 'nói' ở thể từ điển." },
+        { "tagId": "modal", "label": "Modal", "text": "べきだった", "phonetic": "beki datta", "explanation": "Cấu trúc V-ru + beki datta: Đáng lẽ nên làm gì trong quá khứ." }
+      ]
+    }
+  },
+  {
+    "id": "c5",
+    "title": "5. Hiện tại tiếp diễn (Present Continuous)",
+    "languages": {
+      "en": [
+        { "tagId": "subj", "label": "S", "text": "They", "phonetic": "/ðeɪ/", "explanation": "Chủ ngữ." },
+        { "tagId": "aux", "label": "Aux", "text": "are", "phonetic": "/ɑːr/", "explanation": "Động từ to-be chia theo chủ ngữ số nhiều." },
+        { "tagId": "verb", "label": "V", "text": "watching", "phonetic": "/wɑːtʃɪŋ/", "explanation": "V-ing chỉ hành động đang diễn ra." },
+        { "tagId": "obj", "label": "O", "text": "TV", "phonetic": "/ˌtiːˈviː/", "explanation": "Tân ngữ." }
+      ],
+      "vi": [
+        { "tagId": "subj", "label": "S", "text": "Họ", "phonetic": "/ho/", "explanation": "Chủ ngữ." },
+        { "tagId": "aux", "label": "Aux", "text": "đang", "phonetic": "/dang/", "explanation": "Phó từ chỉ sự tiếp diễn, luôn đứng trước động từ." },
+        { "tagId": "verb", "label": "V", "text": "xem", "phonetic": "/xem/", "explanation": "Động từ." },
+        { "tagId": "obj", "label": "O", "text": "TV", "phonetic": "/ti vi/", "explanation": "Tân ngữ." }
+      ],
+      "zh": [
+        { "tagId": "subj", "label": "S", "text": "他们", "phonetic": "tā men", "explanation": "Chủ ngữ." },
+        { "tagId": "aux", "label": "Aux", "text": "正在", "phonetic": "zhèng zài", "explanation": "Phó từ chỉ tiếp diễn 'chính tại' đứng trước động từ." },
+        { "tagId": "verb", "label": "V", "text": "看", "phonetic": "kàn", "explanation": "Động từ." },
+        { "tagId": "obj", "label": "O", "text": "电视", "phonetic": "diàn shì", "explanation": "Tân ngữ." }
+      ],
+      "ja": [
+        { "tagId": "subj", "label": "S", "text": "彼らは", "phonetic": "karera wa", "explanation": "Chủ ngữ." },
+        { "tagId": "obj", "label": "O", "text": "テレビを", "phonetic": "terebi o", "explanation": "Tân ngữ." },
+        { "tagId": "verb", "label": "V", "text": "見て", "phonetic": "mite", "explanation": "Động từ chia thể TE." },
+        { "tagId": "aux", "label": "Aux", "text": "います", "phonetic": "imasu", "explanation": "Cấu trúc V-te imasu biểu thị hành động đang diễn ra." }
+      ]
+    }
+  },
+  {
+    "id": "c6",
+    "title": "6. Hiện tại hoàn thành (Present Perfect)",
+    "languages": {
+      "en": [
+        { "tagId": "subj", "label": "S", "text": "I", "phonetic": "/aɪ/", "explanation": "Chủ ngữ." },
+        { "tagId": "aux", "label": "Aux", "text": "have", "phonetic": "/hæv/", "explanation": "Trợ động từ của thì hoàn thành." },
+        { "tagId": "verb", "label": "V", "text": "finished", "phonetic": "/ˈfɪn.ɪʃt/", "explanation": "Động từ V3 (Quá khứ phân từ)." },
+        { "tagId": "obj", "label": "O", "text": "my work", "phonetic": "/maɪ wɜːrk/", "explanation": "Tân ngữ." }
+      ],
+      "vi": [
+        { "tagId": "subj", "label": "S", "text": "Tôi", "phonetic": "/toi/", "explanation": "Chủ ngữ." },
+        { "tagId": "aux", "label": "Aux", "text": "vừa mới", "phonetic": "/vua moi/", "explanation": "Từ chỉ kết quả vừa xong, vì tiếng Việt không có thì hoàn thành nghiêm ngặt." },
+        { "tagId": "verb", "label": "V", "text": "làm xong", "phonetic": "/lam xong/", "explanation": "Động từ + bổ ngữ kết quả." },
+        { "tagId": "obj", "label": "O", "text": "công việc", "phonetic": "/cong viec/", "explanation": "Tân ngữ." }
+      ],
+      "zh": [
+        { "tagId": "subj", "label": "S", "text": "我", "phonetic": "wǒ", "explanation": "Chủ ngữ." },
+        { "tagId": "aux", "label": "Aux", "text": "已经", "phonetic": "yǐ jīng", "explanation": "Phó từ 'dĩ kinh' (đã)." },
+        { "tagId": "verb", "label": "V", "text": "完成", "phonetic": "wán chéng", "explanation": "Động từ 'hoàn thành'." },
+        { "tagId": "aux", "label": "Aux2", "text": "了", "phonetic": "le", "explanation": "Trợ từ động thái." },
+        { "tagId": "obj", "label": "O", "text": "工作", "phonetic": "gōng zuò", "explanation": "Tân ngữ." }
+      ],
+      "ja": [
+        { "tagId": "subj", "label": "S", "text": "私は", "phonetic": "watashi wa", "explanation": "Chủ ngữ." },
+        { "tagId": "obj", "label": "O", "text": "仕事を", "phonetic": "shigoto o", "explanation": "Tân ngữ." },
+        { "tagId": "verb", "label": "V", "text": "終わらせ", "phonetic": "owarase", "explanation": "Động từ chia thể." },
+        { "tagId": "aux", "label": "Aux", "text": "ました", "phonetic": "mashita", "explanation": "Quá khứ / hoàn tất." }
+      ]
+    }
+  },
+  {
+    "id": "c7",
+    "title": "7. Câu bị động (Passive Voice)",
+    "languages": {
+      "en": [
+        { "tagId": "obj", "label": "New S", "text": "The letter", "phonetic": "/ðə ˈlet.ɚ/", "explanation": "Tân ngữ được đưa lên làm Chủ ngữ bị động." },
+        { "tagId": "aux", "label": "Aux", "text": "was", "phonetic": "/wɑːz/", "explanation": "Động từ to-be chia quá khứ." },
+        { "tagId": "verb", "label": "V", "text": "written", "phonetic": "/ˈrɪt.ən/", "explanation": "Động từ V3." },
+        { "tagId": "subj", "label": "By O", "text": "by him", "phonetic": "/baɪ hɪm/", "explanation": "Chủ thể gây ra hành động." }
+      ],
+      "vi": [
+        { "tagId": "obj", "label": "New S", "text": "Bức thư", "phonetic": "/buc thu/", "explanation": "Chủ ngữ bị động." },
+        { "tagId": "aux", "label": "Aux", "text": "được", "phonetic": "/duoc/", "explanation": "Từ chỉ bị động mang nghĩa tích cực (nếu tiêu cực dùng 'bị')." },
+        { "tagId": "subj", "label": "By O", "text": "anh ấy", "phonetic": "/anh ay/", "explanation": "Chủ thể hành động." },
+        { "tagId": "verb", "label": "V", "text": "viết", "phonetic": "/viet/", "explanation": "Động từ chính." }
+      ],
+      "zh": [
+        { "tagId": "obj", "label": "New S", "text": "信", "phonetic": "xìn", "explanation": "Chủ ngữ." },
+        { "tagId": "aux", "label": "Aux", "text": "被", "phonetic": "bèi", "explanation": "Chữ 'Bị' cấu tạo câu bị động trong tiếng Trung." },
+        { "tagId": "subj", "label": "By O", "text": "他", "phonetic": "tā", "explanation": "Chủ thể." },
+        { "tagId": "verb", "label": "V", "text": "写", "phonetic": "xiě", "explanation": "Động từ." },
+        { "tagId": "aux", "label": "Aux2", "text": "了", "phonetic": "le", "explanation": "Trợ từ." }
+      ],
+      "ja": [
+        { "tagId": "obj", "label": "New S", "text": "手紙は", "phonetic": "tegami wa", "explanation": "Chủ ngữ." },
+        { "tagId": "subj", "label": "By O", "text": "彼に", "phonetic": "kare ni", "explanation": "Chủ thể hành động + trợ từ 'ni' (bởi)." },
+        { "tagId": "verb", "label": "V", "text": "書かれ", "phonetic": "kakare", "explanation": "Động từ chia thể bị động (ukemi)." },
+        { "tagId": "aux", "label": "Aux", "text": "ました", "phonetic": "mashita", "explanation": "Khẳng định quá khứ." }
+      ]
+    }
+  },
+  {
+    "id": "c8",
+    "title": "8. Câu điều kiện loại 2 (Unreal Conditional)",
+    "languages": {
+      "en": [
+        { "tagId": "aux", "label": "If", "text": "If", "phonetic": "/ɪf/", "explanation": "Liên từ điều kiện." },
+        { "tagId": "subj", "label": "S", "text": "I", "phonetic": "/aɪ/", "explanation": "Chủ ngữ." },
+        { "tagId": "verb", "label": "V", "text": "had", "phonetic": "/hæd/", "explanation": "Động từ lùi về quá khứ để giả định trái hiện tại." },
+        { "tagId": "obj", "label": "O", "text": "money", "phonetic": "/ˈmʌn.i/", "explanation": "Tân ngữ." },
+        { "tagId": "modal", "label": "Result", "text": ", I would buy it", "phonetic": "/... aɪ wʊd baɪ ɪt/", "explanation": "Mệnh đề chính dùng Would + V." }
+      ],
+      "vi": [
+        { "tagId": "aux", "label": "If", "text": "Nếu", "phonetic": "/neu/", "explanation": "Từ chỉ điều kiện." },
+        { "tagId": "subj", "label": "S", "text": "tôi", "phonetic": "/toi/", "explanation": "Chủ ngữ." },
+        { "tagId": "verb", "label": "V", "text": "có", "phonetic": "/co/", "explanation": "Động từ." },
+        { "tagId": "obj", "label": "O", "text": "tiền", "phonetic": "/tien/", "explanation": "Tân ngữ." },
+        { "tagId": "modal", "label": "Result", "text": ", tôi sẽ mua nó", "phonetic": "/... toi se mua no/", "explanation": "Tiếng Việt không lùi thì, chỉ dựa vào ngữ cảnh để hiểu là giả định." }
+      ],
+      "zh": [
+        { "tagId": "aux", "label": "If", "text": "如果", "phonetic": "rú guǒ", "explanation": "Từ chỉ điều kiện." },
+        { "tagId": "subj", "label": "S", "text": "我", "phonetic": "wǒ", "explanation": "Chủ ngữ." },
+        { "tagId": "verb", "label": "V", "text": "有", "phonetic": "yǒu", "explanation": "Động từ." },
+        { "tagId": "obj", "label": "O", "text": "钱", "phonetic": "qián", "explanation": "Tân ngữ." },
+        { "tagId": "modal", "label": "Result", "text": "，我就会买它", "phonetic": "wǒ jiù huì mǎi tā", "explanation": "就 (thì) + 会 (sẽ)." }
+      ],
+      "ja": [
+        { "tagId": "aux", "label": "If", "text": "もし", "phonetic": "moshi", "explanation": "Từ nhấn mạnh giả định." },
+        { "tagId": "subj", "label": "S", "text": "私が", "phonetic": "watashi ga", "explanation": "Chủ ngữ." },
+        { "tagId": "obj", "label": "O", "text": "お金を", "phonetic": "okane o", "explanation": "Tân ngữ." },
+        { "tagId": "verb", "label": "V", "text": "持っていたら", "phonetic": "motte itara", "explanation": "Động từ chia thể giả định -tara." },
+        { "tagId": "modal", "label": "Result", "text": "、それを買うのに", "phonetic": "sore o kau no ni", "explanation": "Mệnh đề kết quả, 'no ni' thể hiện sự nuối tiếc." }
+      ]
+    }
+  },
+  {
+    "id": "c9",
+    "title": "9. Mệnh đề quan hệ (Relative Clause)",
+    "languages": {
+      "en": [
+        { "tagId": "subj", "label": "S", "text": "The man", "phonetic": "/ðə mæn/", "explanation": "Danh từ chính." },
+        { "tagId": "aux", "label": "Rel", "text": "who", "phonetic": "/huː/", "explanation": "Đại từ quan hệ, đứng ngay sau danh từ nó bổ nghĩa." },
+        { "tagId": "verb", "label": "V", "text": "is standing", "phonetic": "/ɪz ˈstæn.dɪŋ/", "explanation": "Động từ trong mệnh đề." },
+        { "tagId": "place", "label": "Place", "text": "there", "phonetic": "/ðer/", "explanation": "Vị trí." }
+      ],
+      "vi": [
+        { "tagId": "subj", "label": "S", "text": "Người đàn ông", "phonetic": "/nguoi dan ong/", "explanation": "Danh từ chính." },
+        { "tagId": "aux", "label": "Rel", "text": "người mà", "phonetic": "/nguoi ma/", "explanation": "Từ nối mệnh đề quan hệ." },
+        { "tagId": "verb", "label": "V", "text": "đang đứng", "phonetic": "/dang dung/", "explanation": "Động từ." },
+        { "tagId": "place", "label": "Place", "text": "ở đó", "phonetic": "/o do/", "explanation": "Vị trí." }
+      ],
+      "zh": [
+        { "tagId": "verb", "label": "V", "text": "站在", "phonetic": "zhàn zài", "explanation": "Tiếng Trung đưa toàn bộ mệnh đề bổ nghĩa lên TRƯỚC danh từ chính." },
+        { "tagId": "place", "label": "Place", "text": "那里", "phonetic": "nà lǐ", "explanation": "Vị trí." },
+        { "tagId": "aux", "label": "Rel", "text": "的", "phonetic": "de", "explanation": "Trợ từ kết cấu '的' nối mệnh đề bổ nghĩa với danh từ." },
+        { "tagId": "subj", "label": "S", "text": "那个男人", "phonetic": "nà ge nán rén", "explanation": "Danh từ chính." }
+      ],
+      "ja": [
+        { "tagId": "place", "label": "Place", "text": "あそこに", "phonetic": "asoko ni", "explanation": "Vị trí." },
+        { "tagId": "verb", "label": "V", "text": "立っている", "phonetic": "tatte iru", "explanation": "Động từ trong mệnh đề. Giống tiếng Trung, tiếng Nhật đặt mệnh đề bổ nghĩa TRƯỚC danh từ." },
+        { "tagId": "subj", "label": "S", "text": "男の人", "phonetic": "otoko no hito", "explanation": "Danh từ chính (Người đàn ông)." },
+        { "tagId": "aux", "label": "Rel", "text": "", "phonetic": "", "explanation": "Tiếng Nhật nối trực tiếp V-ru vào Danh từ, không cần đại từ quan hệ." }
+      ]
+    }
+  },
+  {
+    "id": "c10",
+    "title": "10. So sánh hơn (Comparatives)",
+    "languages": {
+      "en": [
+        { "tagId": "subj", "label": "S1", "text": "Cats", "phonetic": "/kæts/", "explanation": "Chủ ngữ 1." },
+        { "tagId": "verb", "label": "V", "text": "are", "phonetic": "/ɑːr/", "explanation": "Động từ to-be." },
+        { "tagId": "aux", "label": "Adj+", "text": "smaller", "phonetic": "/ˈsmɑː.lɚ/", "explanation": "Tính từ so sánh hơn (small + er)." },
+        { "tagId": "obj", "label": "S2", "text": "than dogs", "phonetic": "/ðæn dɑːɡz/", "explanation": "Từ nối 'than' + Đối tượng 2." }
+      ],
+      "vi": [
+        { "tagId": "subj", "label": "S1", "text": "Mèo", "phonetic": "/meo/", "explanation": "Chủ ngữ 1." },
+        { "tagId": "verb", "label": "V", "text": "nhỏ", "phonetic": "/nho/", "explanation": "Tính từ chính." },
+        { "tagId": "aux", "label": "Adj+", "text": "hơn", "phonetic": "/hon/", "explanation": "Từ chỉ mức độ so sánh." },
+        { "tagId": "obj", "label": "S2", "text": "chó", "phonetic": "/cho/", "explanation": "Đối tượng 2." }
+      ],
+      "zh": [
+        { "tagId": "subj", "label": "S1", "text": "猫", "phonetic": "māo", "explanation": "Chủ ngữ 1." },
+        { "tagId": "aux", "label": "Adj+", "text": "比", "phonetic": "bǐ", "explanation": "Từ 'Tỷ' (so với). Cấu trúc: S1 + 比 + S2 + Adj." },
+        { "tagId": "obj", "label": "S2", "text": "狗", "phonetic": "gǒu", "explanation": "Đối tượng 2 đặt ngay sau chữ 比." },
+        { "tagId": "verb", "label": "V", "text": "小", "phonetic": "xiǎo", "explanation": "Tính từ nhỏ đặt cuối." }
+      ],
+      "ja": [
+        { "tagId": "subj", "label": "S1", "text": "猫は", "phonetic": "neko wa", "explanation": "Chủ ngữ 1." },
+        { "tagId": "obj", "label": "S2", "text": "犬", "phonetic": "inu", "explanation": "Đối tượng 2." },
+        { "tagId": "aux", "label": "Adj+", "text": "より", "phonetic": "yori", "explanation": "Trợ từ 'yori' (hơn/so với), đặt ngay sau đối tượng 2." },
+        { "tagId": "verb", "label": "V", "text": "小さいです", "phonetic": "chiisai desu", "explanation": "Tính từ đặt cuối câu." }
+      ]
+    }
+  },
+  {
+    "id": "c11",
+    "title": "11. Động từ khuyết thiếu bắt buộc (Must / Have to)",
+    "languages": {
+      "en": [
+        { "tagId": "subj", "label": "S", "text": "I", "phonetic": "/aɪ/", "explanation": "Chủ ngữ." },
+        { "tagId": "modal", "label": "Modal", "text": "must", "phonetic": "/mʌst/", "explanation": "Động từ khuyết thiếu chỉ sự bắt buộc nội tại." },
+        { "tagId": "verb", "label": "V", "text": "go", "phonetic": "/ɡoʊ/", "explanation": "Động từ chính." },
+        { "tagId": "time", "label": "Time", "text": "now", "phonetic": "/naʊ/", "explanation": "Trạng từ thời gian." }
+      ],
+      "vi": [
+        { "tagId": "subj", "label": "S", "text": "Tôi", "phonetic": "/toi/", "explanation": "Chủ ngữ." },
+        { "tagId": "modal", "label": "Modal", "text": "phải", "phonetic": "/phai/", "explanation": "Động từ khuyết thiếu." },
+        { "tagId": "verb", "label": "V", "text": "đi", "phonetic": "/di/", "explanation": "Động từ." },
+        { "tagId": "time", "label": "Time", "text": "ngay bây giờ", "phonetic": "/ngay bay gio/", "explanation": "Trạng từ thời gian." }
+      ],
+      "zh": [
+        { "tagId": "subj", "label": "S", "text": "我", "phonetic": "wǒ", "explanation": "Chủ ngữ." },
+        { "tagId": "time", "label": "Time", "text": "现在", "phonetic": "xiàn zài", "explanation": "Thời gian (hiện tại) đứng trước động từ." },
+        { "tagId": "modal", "label": "Modal", "text": "必须", "phonetic": "bì xū", "explanation": "Tất tu (bắt buộc phải)." },
+        { "tagId": "verb", "label": "V", "text": "走", "phonetic": "zǒu", "explanation": "Động từ đi." },
+        { "tagId": "aux", "label": "Aux", "text": "了", "phonetic": "le", "explanation": "Trợ từ nhấn mạnh sự thay đổi trạng thái." }
+      ],
+      "ja": [
+        { "tagId": "subj", "label": "S", "text": "私は", "phonetic": "watashi wa", "explanation": "Chủ ngữ." },
+        { "tagId": "time", "label": "Time", "text": "今", "phonetic": "ima", "explanation": "Thời gian." },
+        { "tagId": "verb", "label": "V", "text": "行か", "phonetic": "ika", "explanation": "Thân động từ dạng phủ định." },
+        { "tagId": "modal", "label": "Modal", "text": "なければなりません", "phonetic": "nakereba narimasen", "explanation": "Cấu trúc phủ định kép 'nếu không... thì không được' = phải làm." }
+      ]
+    }
+  },
+  {
+    "id": "c12",
+    "title": "12. Quá khứ tiếp diễn (Past Continuous)",
+    "languages": {
+      "en": [
+        { "tagId": "subj", "label": "S", "text": "He", "phonetic": "/hiː/", "explanation": "Chủ ngữ." },
+        { "tagId": "aux", "label": "Aux", "text": "was", "phonetic": "/wɑːz/", "explanation": "To-be quá khứ số ít." },
+        { "tagId": "verb", "label": "V", "text": "sleeping", "phonetic": "/ˈsliː.pɪŋ/", "explanation": "V-ing (đang diễn ra trong quá khứ)." },
+        { "tagId": "time", "label": "Time", "text": "at 8 PM", "phonetic": "/æt eɪt piː em/", "explanation": "Mốc thời gian cụ thể." }
+      ],
+      "vi": [
+        { "tagId": "subj", "label": "S", "text": "Anh ấy", "phonetic": "/anh ay/", "explanation": "Chủ ngữ." },
+        { "tagId": "aux", "label": "Aux", "text": "đã đang", "phonetic": "/da dang/", "explanation": "Kết hợp từ chỉ quá khứ 'đã' và tiếp diễn 'đang'." },
+        { "tagId": "verb", "label": "V", "text": "ngủ", "phonetic": "/ngu/", "explanation": "Động từ chính." },
+        { "tagId": "time", "label": "Time", "text": "lúc 8 giờ tối", "phonetic": "/luc 8 gio toi/", "explanation": "Mốc thời gian." }
+      ],
+      "zh": [
+        { "tagId": "subj", "label": "S", "text": "他", "phonetic": "tā", "explanation": "Chủ ngữ." },
+        { "tagId": "time", "label": "Time", "text": "晚上8点", "phonetic": "wǎn shang bā diǎn", "explanation": "Thời gian (8h tối)." },
+        { "tagId": "aux", "label": "Aux", "text": "正在", "phonetic": "zhèng zài", "explanation": "Chính tại (đang diễn ra)." },
+        { "tagId": "verb", "label": "V", "text": "睡觉", "phonetic": "shuì jiào", "explanation": "Động từ ngủ. Tiếng Trung không chia thì động từ mà dựa vào trạng từ chỉ thời gian ở trước." }
+      ],
+      "ja": [
+        { "tagId": "subj", "label": "S", "text": "彼は", "phonetic": "kare wa", "explanation": "Chủ ngữ." },
+        { "tagId": "time", "label": "Time", "text": "午後8時に", "phonetic": "gogo hachiji ni", "explanation": "Thời gian + trợ từ 'ni'." },
+        { "tagId": "verb", "label": "V", "text": "寝て", "phonetic": "nete", "explanation": "Động từ thể Te." },
+        { "tagId": "aux", "label": "Aux", "text": "いました", "phonetic": "imashita", "explanation": "Thêm imashita (quá khứ của imasu) để tạo quá khứ tiếp diễn." }
+      ]
+    }
+  }
+]
