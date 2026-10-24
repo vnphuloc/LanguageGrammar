@@ -428,37 +428,12 @@ function setupTransformView() {
             item.classList.remove('active');
             item.classList.toggle('cross-active', item.dataset.row === cell.dataset.row || item.dataset.col === cell.dataset.col);
         });
-        //drawTransformConnections(cell);
     }
 
     function clearTransformHover() {
         const grid = document.getElementById('transform-grid');
         grid.classList.remove('has-hover');
         grid.querySelectorAll('.transform-cell').forEach(item => item.classList.remove('cross-active'));
-        document.getElementById('transform-connection-lines').innerHTML = '';
-    }
-
-    function drawTransformConnections(activeCell) {
-        const boardElement = document.querySelector('.transform-board');
-        const svg = document.getElementById('transform-connections');
-        const lineGroup = document.getElementById('transform-connection-lines');
-        const boardRect = boardElement.getBoundingClientRect();
-        const cells = [...document.querySelectorAll('.transform-cell')];
-        const points = cells.reduce((result, cell) => {
-            const rect = cell.getBoundingClientRect();
-            result[`${cell.dataset.row}-${cell.dataset.col}`] = {
-                x: rect.left - boardRect.left + rect.width / 2,
-                y: rect.top - boardRect.top + rect.height / 2
-            };
-            return result;
-        }, {});
-        svg.setAttribute('viewBox', `0 0 ${boardElement.clientWidth} ${boardElement.clientHeight}`);
-        const rowPoints = [0, 1, 2, 3].map(col => points[`${activeCell.dataset.row}-${col}`]);
-        const colPoints = [0, 1, 2, 3].map(row => points[`${row}-${activeCell.dataset.col}`]);
-        lineGroup.innerHTML = [rowPoints, colPoints].map(pathPoints => {
-            const path = pathPoints.map((point, index) => `${index ? 'L' : 'M'} ${point.x} ${point.y}`).join(' ');
-            return `<path d="${path}" />`;
-        }).join('');
     }
 
     function openTransformDetail(tense) {
