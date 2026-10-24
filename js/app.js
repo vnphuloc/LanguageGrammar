@@ -135,7 +135,6 @@ function renderContext(contextId) {
             span.innerHTML = `
                     <span class="block-text">${blockData.text}</span>
                     <span class="block-label">[${blockData.label}]</span>
-                </div>
                 ${blockData.phonetic ? `<span class="block-phonetic">${blockData.phonetic}</span>` : ''}
             `;
             
