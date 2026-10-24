@@ -636,18 +636,12 @@ function setupSettings() {
         }
         redrawLinesOnLayoutChange();
     });
-    if (labelToggle.checked) {
-        board.classList.add('show-labels');
-    }
+document.body.classList.toggle('show-labels', labelToggle.checked);
 
-    labelToggle.addEventListener('change', (e) => {
-        if (e.target.checked) {
-            board.classList.add('show-labels');
-        } else {
-            board.classList.remove('show-labels');
-        }
-        redrawLinesOnLayoutChange();
-    });
+labelToggle.addEventListener('change', (e) => {
+    document.body.classList.toggle('show-labels', e.target.checked);
+    redrawLinesOnLayoutChange();
+});
 }
 
 function redrawLinesOnLayoutChange() {

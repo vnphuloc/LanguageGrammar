@@ -473,3 +473,6 @@ select { appearance: none; width: 100%; padding: 1rem 1.5rem; font-size: 1rem; f
     .structure-group p { flex-direction: column; gap: 0.15rem; }
     .structure-group code { text-align: left; }
 }
+body:not(.show-labels) .tense-sub {
+    display: none !important;
+}
