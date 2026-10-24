@@ -11,11 +11,23 @@
 
     <!-- Bảng Settings Góc Phải -->
     <div class="settings-wrapper">
-        <button id="settingsToggleBtn" class="settings-btn" title="Cài đặt">⚙️</button>
+        <button id="settingsToggleBtn" class="settings-btn" title="Cài đặt">
+            <!-- Icon Bánh Răng CSS -->
+            <div class="gear-icon">
+                <div class="tooth"></div>
+                <div class="tooth"></div>
+                <div class="tooth"></div>
+                <div class="center-hole"></div>
+            </div>
+        </button>
         <div id="settingsPanel" class="settings-panel">
             <div class="setting-item">
                 <label for="dimSlider">Độ mờ khi Hover:</label>
                 <input type="range" id="dimSlider" min="0" max="1" step="0.1" value="0.25">
+            </div>
+            <div class="setting-item">
+                <label for="fontSlider">Cỡ chữ:</label>
+                <input type="range" id="fontSlider" min="0.8" max="1.5" step="0.1" value="1.1">
             </div>
             <div class="setting-item">
                 <label for="phoneticToggle">Hiện phiên âm:</label>
@@ -41,17 +53,15 @@
     <div class="grammar-board-wrapper" id="board-wrapper">
         <svg id="svg-canvas">
             <defs>
-                <!-- Đã chỉnh refX và path để mũi tên dính chặt, không bị lòi nét line -->
-                <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
-                    markerWidth="7" markerHeight="7" orient="auto">
-                    <path d="M 0 1.5 L 10 5 L 0 8.5 z" fill="var(--accent-color)" />
+                <!-- Mũi tên mượt mà, điểm nối (refX="9.5") đảm bảo không bị đâm xuyên -->
+                <marker id="arrow" viewBox="0 0 10 10" refX="9.5" refY="5"
+                    markerWidth="5" markerHeight="5" orient="auto">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent-color)" />
                 </marker>
             </defs>
         </svg>
 
-        <div class="grammar-board" id="grammar-board">
-            <!-- Nội dung các câu sẽ được render tại đây -->
-        </div>
+        <div class="grammar-board" id="grammar-board"></div>
     </div>
 
     <div class="instruction">
