@@ -1,0 +1,226 @@
+[
+  {
+    "id": "past_simple",
+    "time": "past",
+    "aspect": "simple",
+    "title_en": "Past Simple",
+    "title_vi": "Quá khứ đơn",
+    "formula": "did / V2 / -ed",
+    "summary": "Diễn tả hành động đã xảy ra và kết thúc hoàn toàn trong quá khứ, thường có mốc thời gian rõ ràng.",
+    "ratings": {
+      "daily": { "score": 10, "max": 10, "comment": "Vua các thì giao tiếp, dùng kể chuyện hàng ngày" },
+      "writing": { "score": 10, "max": 10, "comment": "Cực kỳ quan trọng trong báo cáo và tường thuật lịch sử" }
+    },
+    "examples": ["I coded this app yesterday.", "She wrote the report last night."]
+  },
+  {
+    "id": "past_continuous",
+    "time": "past",
+    "aspect": "continuous",
+    "title_en": "Past Continuous",
+    "title_vi": "Quá khứ tiếp diễn",
+    "formula": "was / were + V-ing",
+    "summary": "Diễn tả một hành động đang diễn ra tại một thời điểm hoặc bị một hành động khác xen vào trong quá khứ.",
+    "ratings": {
+      "daily": { "score": 8, "max": 10, "comment": "Rất hay dùng khi kể lại bối cảnh và sự việc" },
+      "writing": { "score": 7, "max": 10, "comment": "Hữu ích trong báo cáo sự cố và mô tả quy trình" }
+    },
+    "examples": ["I was coding when you called.", "They were writing the report at 8 p.m."]
+  },
+  {
+    "id": "past_perfect",
+    "time": "past",
+    "aspect": "perfect",
+    "title_en": "Past Perfect",
+    "title_vi": "Quá khứ hoàn thành",
+    "formula": "had + V3",
+    "summary": "Diễn tả hành động xảy ra trước một hành động hoặc thời điểm khác trong quá khứ.",
+    "ratings": {
+      "daily": { "score": 6, "max": 10, "comment": "Dùng vừa phải để làm rõ thứ tự sự kiện" },
+      "writing": { "score": 8, "max": 10, "comment": "Quan trọng trong tường thuật, biên bản và báo cáo" }
+    },
+    "examples": ["I had coded the feature before the demo.", "She had written the report by noon."]
+  },
+  {
+    "id": "past_perfect_continuous",
+    "time": "past",
+    "aspect": "perfect_continuous",
+    "title_en": "Past Perfect Continuous",
+    "title_vi": "Quá khứ hoàn thành tiếp diễn",
+    "formula": "had been + V-ing",
+    "summary": "Nhấn mạnh khoảng thời gian một hành động đã diễn ra liên tục trước một mốc quá khứ.",
+    "ratings": {
+      "daily": { "score": 3, "max": 10, "comment": "Người bản xứ ít dùng khi nói thông thường" },
+      "writing": { "score": 5, "max": 10, "comment": "Có ích khi mô tả nguyên nhân hoặc tiến độ trước đây" }
+    },
+    "examples": ["I had been coding for hours before the bug appeared.", "They had been writing all morning."]
+  },
+  {
+    "id": "present_simple",
+    "time": "present",
+    "aspect": "simple",
+    "title_en": "Present Simple",
+    "title_vi": "Hiện tại đơn",
+    "formula": "V1 / V1-s",
+    "summary": "Diễn tả thói quen, sự thật hiển nhiên, lịch trình hoặc trạng thái ổn định ở hiện tại.",
+    "ratings": {
+      "daily": { "score": 10, "max": 10, "comment": "Thì nền tảng, dùng liên tục trong giao tiếp" },
+      "writing": { "score": 10, "max": 10, "comment": "Rất quan trọng trong tài liệu, quy trình và mô tả sản phẩm" }
+    },
+    "examples": ["I code every day.", "The service writes a log file."]
+  },
+  {
+    "id": "present_continuous",
+    "time": "present",
+    "aspect": "continuous",
+    "title_en": "Present Continuous",
+    "title_vi": "Hiện tại tiếp diễn",
+    "formula": "am / is / are + V-ing",
+    "summary": "Diễn tả hành động đang xảy ra lúc nói hoặc kế hoạch đã sắp xếp trong tương lai gần.",
+    "ratings": {
+      "daily": { "score": 9, "max": 10, "comment": "Rất phổ biến để nói việc đang xảy ra" },
+      "writing": { "score": 7, "max": 10, "comment": "Thường gặp trong cập nhật tiến độ và email công việc" }
+    },
+    "examples": ["I am coding the new screen.", "We are writing the release notes."]
+  },
+  {
+    "id": "present_perfect",
+    "time": "present",
+    "aspect": "perfect",
+    "title_en": "Present Perfect",
+    "title_vi": "Hiện tại hoàn thành",
+    "formula": "have / has + V3",
+    "summary": "Kết nối một hành động trong quá khứ với kết quả hoặc trải nghiệm còn liên quan đến hiện tại.",
+    "ratings": {
+      "daily": { "score": 8, "max": 10, "comment": "Rất thông dụng để nói kinh nghiệm và kết quả" },
+      "writing": { "score": 9, "max": 10, "comment": "Quan trọng trong email trạng thái và báo cáo tiến độ" }
+    },
+    "examples": ["I have coded the main feature.", "She has written the final summary."]
+  },
+  {
+    "id": "present_perfect_continuous",
+    "time": "present",
+    "aspect": "perfect_continuous",
+    "title_en": "Present Perfect Continuous",
+    "title_vi": "Hiện tại hoàn thành tiếp diễn",
+    "formula": "have / has been + V-ing",
+    "summary": "Nhấn mạnh hành động bắt đầu trong quá khứ và vẫn đang tiếp diễn hoặc vừa kết thúc với dấu hiệu còn lại.",
+    "ratings": {
+      "daily": { "score": 6, "max": 10, "comment": "Dùng khi cần nhấn mạnh thời lượng" },
+      "writing": { "score": 7, "max": 10, "comment": "Hữu ích trong báo cáo tiến độ và phân tích nguyên nhân" }
+    },
+    "examples": ["I have been coding since morning.", "She has been writing the specification for two days."]
+  },
+  {
+    "id": "future_simple",
+    "time": "future",
+    "aspect": "simple",
+    "title_en": "Future Simple",
+    "title_vi": "Tương lai đơn",
+    "formula": "will + V1",
+    "summary": "Diễn tả dự đoán, quyết định tức thời, lời hứa hoặc hành động sẽ xảy ra trong tương lai.",
+    "ratings": {
+      "daily": { "score": 9, "max": 10, "comment": "Rất phổ biến khi hứa hẹn, dự đoán và quyết định" },
+      "writing": { "score": 9, "max": 10, "comment": "Quan trọng trong kế hoạch và cam kết công việc" }
+    },
+    "examples": ["I will code the fix tomorrow.", "We will write the report next week."]
+  },
+  {
+    "id": "future_continuous",
+    "time": "future",
+    "aspect": "continuous",
+    "title_en": "Future Continuous",
+    "title_vi": "Tương lai tiếp diễn",
+    "formula": "will be + V-ing",
+    "summary": "Diễn tả một hành động sẽ đang diễn ra tại một thời điểm cụ thể trong tương lai.",
+    "ratings": {
+      "daily": { "score": 5, "max": 10, "comment": "Dùng khi cần mô tả lịch trình tương lai" },
+      "writing": { "score": 7, "max": 10, "comment": "Hữu ích trong kế hoạch và phân bổ nguồn lực" }
+    },
+    "examples": ["I will be coding during the meeting.", "They will be writing the proposal tomorrow."]
+  },
+  {
+    "id": "future_perfect",
+    "time": "future",
+    "aspect": "perfect",
+    "title_en": "Future Perfect",
+    "title_vi": "Tương lai hoàn thành",
+    "formula": "will have + V3",
+    "summary": "Diễn tả hành động sẽ hoàn tất trước một thời điểm hoặc hành động khác trong tương lai.",
+    "ratings": {
+      "daily": { "score": 4, "max": 10, "comment": "Ít gặp trong hội thoại thông thường" },
+      "writing": { "score": 8, "max": 10, "comment": "Quan trọng trong deadline, mục tiêu và kế hoạch dự án" }
+    },
+    "examples": ["I will have coded the feature by Friday.", "She will have written the report by noon."]
+  },
+  {
+    "id": "future_perfect_continuous",
+    "time": "future",
+    "aspect": "perfect_continuous",
+    "title_en": "Future Perfect Continuous",
+    "title_vi": "Tương lai hoàn thành tiếp diễn",
+    "formula": "will have been + V-ing",
+    "summary": "Nhấn mạnh khoảng thời gian một hành động sẽ tiếp diễn đến một mốc tương lai.",
+    "ratings": {
+      "daily": { "score": 2, "max": 10, "comment": "Siêu hiếm trong giao tiếp hàng ngày" },
+      "writing": { "score": 5, "max": 10, "comment": "Chỉ cần trong một số báo cáo dự báo chuyên sâu" }
+    },
+    "examples": ["By June, I will have been coding here for a year.", "They will have been writing for three hours."]
+  },
+  {
+    "id": "future_in_past_simple",
+    "time": "future_in_past",
+    "aspect": "simple",
+    "title_en": "Future in the Past Simple",
+    "title_vi": "Tương lai trong quá khứ đơn",
+    "formula": "would + V1",
+    "summary": "Diễn tả điều được xem là tương lai từ một mốc nhìn trong quá khứ, thường trong lời kể hoặc câu tường thuật.",
+    "ratings": {
+      "daily": { "score": 5, "max": 10, "comment": "Khá thường gặp khi kể lại lời nói hoặc dự định" },
+      "writing": { "score": 8, "max": 10, "comment": "Quan trọng trong biên bản, tường thuật và văn phong gián tiếp" }
+    },
+    "examples": ["She said she would code the fix.", "He promised he would write the report."]
+  },
+  {
+    "id": "future_in_past_continuous",
+    "time": "future_in_past",
+    "aspect": "continuous",
+    "title_en": "Future in the Past Continuous",
+    "title_vi": "Tương lai trong quá khứ tiếp diễn",
+    "formula": "would be + V-ing",
+    "summary": "Diễn tả hành động được dự kiến đang diễn ra tại một thời điểm tương lai nhưng nhìn từ quá khứ.",
+    "ratings": {
+      "daily": { "score": 3, "max": 10, "comment": "Ít dùng khi nói, chủ yếu trong lời kể" },
+      "writing": { "score": 6, "max": 10, "comment": "Có ích trong tường thuật lịch trình và dự báo cũ" }
+    },
+    "examples": ["I knew I would be coding late.", "They expected she would be writing the proposal."]
+  },
+  {
+    "id": "future_in_past_perfect",
+    "time": "future_in_past",
+    "aspect": "perfect",
+    "title_en": "Future in the Past Perfect",
+    "title_vi": "Tương lai trong quá khứ hoàn thành",
+    "formula": "would have + V3",
+    "summary": "Diễn tả điều được dự kiến sẽ hoàn tất trước một mốc khác, xét từ một thời điểm trong quá khứ.",
+    "ratings": {
+      "daily": { "score": 2, "max": 10, "comment": "Người bản xứ ít dùng khi nói" },
+      "writing": { "score": 6, "max": 10, "comment": "Thỉnh thoảng dùng trong tường thuật kế hoạch đã qua" }
+    },
+    "examples": ["He thought I would have coded it by Monday.", "She said she would have written the report by then."]
+  },
+  {
+    "id": "future_in_past_perfect_continuous",
+    "time": "future_in_past",
+    "aspect": "perfect_continuous",
+    "title_en": "Future in the Past Perfect Continuous",
+    "title_vi": "Tương lai trong quá khứ hoàn thành tiếp diễn",
+    "formula": "would have been + V-ing",
+    "summary": "Nhấn mạnh thời lượng dự kiến của một hành động kéo dài đến một mốc tương lai nhìn từ quá khứ.",
+    "ratings": {
+      "daily": { "score": 1, "max": 10, "comment": "Gần như không dùng trong giao tiếp thông thường" },
+      "writing": { "score": 3, "max": 10, "comment": "Rất hiếm, chỉ xuất hiện trong tường thuật đặc thù" }
+    },
+    "examples": ["They knew I would have been coding for a year by June.", "She expected he would have been writing all day."]
+  }
+]

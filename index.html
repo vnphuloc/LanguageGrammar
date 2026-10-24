@@ -9,10 +9,24 @@
 </head>
 <body>
 
+    <nav class="view-switcher" aria-label="Chọn chế độ xem">
+        <button id="matrixViewBtn" class="view-tab active" type="button" data-view="matrix" aria-controls="matrix-view" aria-selected="true">
+            <span aria-hidden="true">🔤</span>
+            <span>Syntax Matrix</span>
+        </button>
+        <button id="timelineViewBtn" class="view-tab" type="button" data-view="timeline" aria-controls="timeline-view" aria-selected="false">
+            <span aria-hidden="true">⏳</span>
+            <span>12 Tenses Timeline</span>
+        </button>
+        <button id="transformViewBtn" class="view-tab" type="button" data-view="transform" aria-controls="transform-view" aria-selected="false">
+            <span aria-hidden="true">🔄</span>
+            <span>Verb Transformation Matrix</span>
+        </button>
+    </nav>
+
     <!-- Bảng Settings Góc Phải -->
     <div class="settings-wrapper">
         <button id="settingsToggleBtn" class="settings-btn" title="Cài đặt">
-            <!-- Icon Bánh Răng CSS -->
             <div class="gear-icon">
                 <div class="tooth"></div>
                 <div class="tooth"></div>
@@ -26,10 +40,9 @@
                 <input type="range" id="dimSlider" min="0" max="1" step="0.1" value="0.25">
             </div>
             <div class="setting-item">
-                <label for="fontSlider">Cỡ chữ:</label>
+                <label for="fontSlider">C cỡ chữ:</label>
                 <input type="range" id="fontSlider" min="0.8" max="1.5" step="0.1" value="1.1">
             </div>
-            <!-- Bổ sung nút gạt Hiện nhãn SVO -->
             <div class="setting-item">
                 <label for="labelToggle">Hiện nhãn [SVO]:</label>
                 <label class="switch">
@@ -44,43 +57,122 @@
                     <span class="slider round"></span>
                 </label>
             </div>
+            <button id="openColorManagerBtn" class="color-manager-btn" type="button">
+                🎨 Tùy chỉnh Bảng màu &amp; Quy tắc
+            </button>
         </div>
     </div>
 
-    <header>
+    <!-- Nút ? Hướng dẫn góc phải -->
+    <button id="helpToggleBtn" class="help-btn" type="button" title="Hướng dẫn" aria-label="Mở hướng dẫn">
+        ?
+    </button>
+
+    <header id="main-header">
         <h1>Syntax Matrix</h1>
         <p class="subtitle">Khám phá và so sánh trật tự ngữ pháp giữa 4 ngôn ngữ qua kết nối trực quan.</p>
     </header>
 
-    <div class="selector-container">
-        <select id="context-selector">
-            <option value="" disabled selected>Đang tải dữ liệu...</option>
-        </select>
-    </div>
+    <main id="matrix-view" class="view-section active">
+        <div class="selector-container">
+            <div class="selector-row">
+                <div class="context-menu">
+                    <button id="context-menu-toggle" class="context-menu-toggle" type="button"
+                        aria-label="Chọn nguồn dữ liệu" aria-expanded="false" aria-controls="context-menu-options">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <div id="context-menu-options" class="context-menu-options" role="menu" aria-label="Nguồn dữ liệu">
+                        <button class="context-menu-option active" type="button" role="menuitem" data-source="contexts">
+                            Contexts 1
+                        </button>
+                        <button class="context-menu-option" type="button" role="menuitem" data-source="contexts2">
+                            Contexts 2
+                        </button>
+                    </div>
+                </div>
+                <select id="context-selector">
+                    <option value="" disabled selected>Đang tải dữ liệu...</option>
+                </select>
+            </div>
+        </div>
 
-    <div class="grammar-board-wrapper" id="board-wrapper">
-        <svg id="svg-canvas">
-            <defs>
-                <!-- Mũi tên được thiết kế lại: Thêm phần đuôi vươn về sau để lấp khoảng trống -->
-                <marker id="arrow" viewBox="0 0 24 10" refX="22" refY="5"
-                    markerWidth="6" markerHeight="6" orient="auto">
-                    <!-- Đuôi đặc lùi về sau (dài 14px) -->
-                    <line x1="0" y1="5" x2="14" y2="5" stroke="var(--accent-color)" stroke-width="1.5" />
-                    <!-- Đầu tam giác -->
-                    <path d="M 13 0 L 24 5 L 13 10 z" fill="var(--accent-color)" />
-                </marker>
-            </defs>
-        </svg>
+        <div class="grammar-board-wrapper" id="board-wrapper">
+            <svg id="svg-canvas">
+                <defs>
+                    <marker id="arrow" viewBox="0 0 24 10" refX="22" refY="5"
+                        markerWidth="6" markerHeight="6" orient="auto">
+                        <line x1="0" y1="5" x2="14" y2="5" stroke="var(--accent-color)" stroke-width="1.5" />
+                        <path d="M 13 0 L 24 5 L 13 10 z" fill="var(--accent-color)" />
+                    </marker>
+                </defs>
+            </svg>
 
-        <div class="grammar-board" id="grammar-board"></div>
-    </div>
+            <div class="grammar-board" id="grammar-board"></div>
+        </div>
 
-    <div class="instruction">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-        <span>Rê chuột (hover) vào BẤT CỨ từ nào để xem sự dịch chuyển vị trí tương ứng ở các ngôn ngữ khác.</span>
-    </div>
+        <div class="instruction">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            <span>Rê chuột (hover) vào BẤT CỨ từ nào để xem sự dịch chuyển vị trí tương ứng ở các ngôn ngữ khác.</span>
+        </div>
+    </main>
 
-    <!-- Modal cho giải thích -->
+    <main id="timeline-view" class="view-section" aria-hidden="true">
+        <header class="timeline-header">
+            <h2>Trục thời gian 12 thì tiếng Anh</h2>
+        </header>
+        <section class="timeline-board" aria-label="Trục thời gian 12 thì tiếng Anh">
+            <div class="timeline-axis-labels">
+                <span>QUÁ KHỨ <small>PAST</small></span>
+                <span>HIỆN TẠI <small>PRESENT</small></span>
+                <span>TƯƠNG LAI <small>FUTURE</small></span>
+            </div>
+            <div id="timeline-axis" class="timeline-axis">
+                <div id="timeline-arrow-axis" aria-hidden="true"></div>
+                <div class="timeline-axis-line"></div>
+                <div class="timeline-present-marker"><span>NOW</span></div>
+                <div id="timeline-rows" class="timeline-rows"></div>
+            </div>
+        </section>
+    </main>
+
+    <main id="transform-view" class="view-section" aria-hidden="true">
+        <header class="transform-header">
+            <span class="transform-kicker">ENGLISH VERB CONJUGATION LAB</span>
+            <h2>Mô hình Biến đổi Dạng từ: 12 Thì Chính &amp; 4 Cấu trúc Tương lai trong Quá khứ</h2>
+            <p>Khám phá sự chuyển hình thái Động từ qua các mốc Thời gian và Thể ngữ pháp.</p>
+        </header>
+        <section class="transform-selector-panel" aria-label="Chọn động từ mẫu">
+            <div>
+                <span class="transform-panel-label">ĐỘNG TỪ MẪU</span>
+                <p>Nhấn để cập nhật toàn bộ ma trận</p>
+            </div>
+            <div id="verb-selector" class="verb-selector" role="group" aria-label="Danh sách động từ mẫu"></div>
+        </section>
+        <section class="transform-board" aria-label="Ma trận biến đổi dạng từ">
+            <div class="transform-axis-corner">THỜI GIAN <span>×</span> THỂ</div>
+            <div class="transform-column-labels">
+                <span>Simple<small>Đơn</small></span>
+                <span>Continuous<small>Tiếp diễn</small></span>
+                <span>Perfect<small>Hoàn thành</small></span>
+                <span>Perfect Continuous<small>HT tiếp diễn</small></span>
+            </div>
+            <div id="transform-grid" class="transform-grid"></div>
+            <svg id="transform-connections" class="transform-connections" aria-hidden="true">
+                <defs>
+                    <marker id="transform-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z"></path>
+                    </marker>
+                </defs>
+                <g id="transform-connection-lines"></g>
+            </svg>
+        </section>
+        <p class="transform-note">*Lưu ý: 4 dạng Future in the Past là cấu trúc giả định mở rộng (would + V).</p>
+        <p class="transform-hint">Rê chuột để xem các biến đổi cùng hàng và cùng cột. Nhấn vào ô để xem hướng dẫn sử dụng chi tiết.</p>
+    </main>
+
+    <!-- Modal giải thích từ vựng Syntax Matrix -->
     <div id="explanationModal" class="modal-overlay">
         <div class="modal-content">
             <button id="closeModal" class="close-btn">&times;</button>
@@ -93,6 +185,156 @@
             <div class="modal-body">
                 <p id="modalExplanation" class="modal-explanation-text"></p>
             </div>
+        </div>
+    </div>
+
+    <!-- Modal quản lý quy tắc gom nhóm và bảng màu -->
+    <div id="colorManagerModal" class="modal-overlay">
+        <div class="modal-content color-manager-content">
+            <button id="closeColorManagerBtn" class="close-btn" type="button" aria-label="Đóng">&times;</button>
+            <div class="color-manager-header">
+                <span class="modal-kicker">SYNTAX MATRIX</span>
+                <h2>Quản lý bảng màu &amp; quy tắc</h2>
+                <p>Tùy chỉnh màu hiển thị và xem cách các tag biến thể được gom về nhóm chuẩn.</p>
+            </div>
+
+            <div class="color-manager-layout">
+                <section class="color-rules-section">
+                    <h3>Bảng quy tắc gom nhóm</h3>
+                    <div class="rules-table-wrapper">
+                        <table class="rules-table">
+                            <thead>
+                                <tr>
+                                    <th>Nhóm chuẩn</th>
+                                    <th>Các tag được gom nhóm</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><span class="rule-dot rule-dot-subj"></span>Chủ ngữ</td><td>S, S1, S2, New S, By O, subj...</td></tr>
+                                <tr><td><span class="rule-dot rule-dot-verb"></span>Động từ</td><td>V, V1, V2, v-ing, v-ed, verb...</td></tr>
+                                <tr><td><span class="rule-dot rule-dot-obj"></span>Tân ngữ</td><td>O, O1, O2, N, obj...</td></tr>
+                                <tr><td><span class="rule-dot rule-dot-time"></span>Trạng ngữ</td><td>Time, Place, adv, Adv, time...</td></tr>
+                                <tr><td><span class="rule-dot rule-dot-modal"></span>Cấu trúc / Khuyết thiếu</td><td>Modal, Comp, Result, If, Prep...</td></tr>
+                                <tr><td><span class="rule-dot rule-dot-aux"></span>Trợ từ / Từ nối</td><td>Aux, modifier, Rel, participle...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="color-custom-section">
+                    <div class="color-section-heading">
+                        <div>
+                            <h3>Bộ chỉnh màu Custom</h3>
+                            <p>Thay đổi được áp dụng ngay lập tức.</p>
+                        </div>
+                        <button id="resetColorsBtn" class="reset-colors-btn" type="button">Đặt lại màu mặc định</button>
+                    </div>
+                    <div class="color-controls">
+                        <div class="color-control-row">
+                            <div><strong>Chủ ngữ</strong><small>subj</small></div>
+                            <label>Nền <input type="color" data-css-var="--c-subj-bg" data-default="#D0E1FD" value="#D0E1FD"></label>
+                            <label>Chữ <input type="color" data-css-var="--c-subj-text" data-default="#0D47A1" value="#0D47A1"></label>
+                        </div>
+                        <div class="color-control-row">
+                            <div><strong>Động từ</strong><small>verb</small></div>
+                            <label>Nền <input type="color" data-css-var="--c-verb-bg" data-default="#FAD2E1" value="#FAD2E1"></label>
+                            <label>Chữ <input type="color" data-css-var="--c-verb-text" data-default="#B71C1C" value="#B71C1C"></label>
+                        </div>
+                        <div class="color-control-row">
+                            <div><strong>Tân ngữ</strong><small>obj</small></div>
+                            <label>Nền <input type="color" data-css-var="--c-obj-bg" data-default="#D8F3DC" value="#D8F3DC"></label>
+                            <label>Chữ <input type="color" data-css-var="--c-obj-text" data-default="#1B5E20" value="#1B5E20"></label>
+                        </div>
+                        <div class="color-control-row">
+                            <div><strong>Trạng ngữ</strong><small>time</small></div>
+                            <label>Nền <input type="color" data-css-var="--c-time-bg" data-default="#FFF3BF" value="#FFF3BF"></label>
+                            <label>Chữ <input type="color" data-css-var="--c-time-text" data-default="#E65100" value="#E65100"></label>
+                        </div>
+                        <div class="color-control-row">
+                            <div><strong>Cấu trúc / Khuyết thiếu</strong><small>modal</small></div>
+                            <label>Nền <input type="color" data-css-var="--c-modal-bg" data-default="#E2D6F8" value="#E2D6F8"></label>
+                            <label>Chữ <input type="color" data-css-var="--c-modal-text" data-default="#4A148C" value="#4A148C"></label>
+                        </div>
+                        <div class="color-control-row">
+                            <div><strong>Trợ từ / Từ nối</strong><small>aux</small></div>
+                            <label>Nền <input type="color" data-css-var="--c-aux-bg" data-default="#FFE4E1" value="#FFE4E1"></label>
+                            <label>Chữ <input type="color" data-css-var="--c-aux-text" data-default="#8B0000" value="#8B0000"></label>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 12 Tenses Timeline (Đứng độc lập) -->
+    <div id="tenseDetailModal" class="modal-overlay">
+        <div class="modal-content tense-detail-content">
+            <button id="closeTenseDetailBtn" class="close-btn" type="button" aria-label="Đóng">&times;</button>
+            <div class="tense-detail-header">
+                <span id="tenseCategory" class="modal-lang-badge"></span>
+                <span id="tenseEnglishName" class="modal-tag-badge"></span>
+                <h2 id="tenseVietnameseName"></h2>
+                <p id="tenseSummary"></p>
+            </div>
+            <div class="tense-detail-grid">
+                <section>
+                    <h3>Cấu trúc ngữ pháp</h3>
+                    <div id="tenseStructures" class="structure-groups"></div>
+                </section>
+                <section>
+                    <h3>Dấu hiệu nhận biết</h3>
+                    <div id="tenseSignals" class="signal-list"></div>
+                    <h3 class="special-title">Ngữ cảnh ứng dụng đặc biệt</h3>
+                    <ul id="tenseSpecialUsages" class="special-usage-list"></ul>
+                </section>
+            </div>
+            <section class="tense-examples-section">
+                <h3>Ví dụ</h3>
+                <ul id="tenseExamples" class="example-list"></ul>
+            </section>
+        </div>
+    </div>
+
+    <!-- Modal Verb Transformation Matrix (Tách độc lập) -->
+    <div id="transformDetailModal" class="modal-overlay">
+        <div class="modal-content transform-detail-content">
+            <button id="closeTransformDetailBtn" class="close-btn" type="button" aria-label="Đóng">&times;</button>
+            <div class="transform-detail-heading">
+                <span id="transformDetailTime" class="modal-lang-badge"></span>
+                <span id="transformDetailAspect" class="modal-tag-badge"></span>
+                <h2 id="transformDetailTitle"></h2>
+                <p id="transformDetailSummary"></p>
+            </div>
+            <div class="transform-formula-card">
+                <span>CẤU TRÚC TỔNG QUÁT</span>
+                <code id="transformDetailFormula"></code>
+            </div>
+            <div class="transform-rating-grid">
+                <div class="transform-rating-card">
+                    <div><span>🗣️ Giao tiếp hàng ngày</span><strong id="transformDailyScore"></strong></div>
+                    <div class="rating-track"><span id="transformDailyBar"></span></div>
+                    <p id="transformDailyComment"></p>
+                </div>
+                <div class="transform-rating-card">
+                    <div><span>📝 Văn phong công việc / Báo cáo</span><strong id="transformWritingScore"></strong></div>
+                    <div class="rating-track"><span id="transformWritingBar"></span></div>
+                    <p id="transformWritingComment"></p>
+                </div>
+            </div>
+            <section class="transform-modal-examples">
+                <h3>Ví dụ thực tế</h3>
+                <ul id="transformDetailExamples"></ul>
+            </section>
+        </div>
+    </div>
+
+    <!-- Modal Hướng Dẫn Ngữ Cảnh (Tách độc lập dưới body) -->
+    <div id="helpModal" class="modal-overlay" aria-hidden="true">
+        <div class="modal-content help-modal-content" role="dialog" aria-modal="true" aria-labelledby="helpModalTitle">
+            <button id="closeHelpBtn" class="close-btn" type="button" aria-label="Đóng hướng dẫn">&times;</button>
+            <span class="modal-kicker">SYNTAX MATRIX · HƯỚNG DẪN</span>
+            <h2 id="helpModalTitle"></h2>
+            <div id="helpModalBody" class="help-modal-body"></div>
         </div>
     </div>
 

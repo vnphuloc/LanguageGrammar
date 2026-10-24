@@ -1,0 +1,213 @@
+[
+  {
+    "id": "past_simple",
+    "name_en": "Past Simple",
+    "name_vi": "Thì Quá khứ đơn",
+    "category": "past",
+    "group": "simple",
+    "timeline_pos": { "zone": "past", "style_left": "5%", "style_width": "22%" },
+    "has_stop_marker": true,
+    "summary": "Diễn tả một hành động đã xảy ra và kết thúc tại một thời điểm xác định trong quá khứ.",
+    "structures": {
+      "normal_verb": { "pos": "S + V2/ed", "neg": "S + did not + V", "ques": "Did + S + V?" },
+      "to_be": { "pos": "S + was/were + ...", "neg": "S + was/were not + ...", "ques": "Was/Were + S + ...?" }
+    },
+    "signals": ["yesterday", "last night", "ago", "in 2020", "when I was young"],
+    "special_usages": ["Kể lại chuỗi sự kiện đã hoàn tất trong quá khứ.", "Dùng với một mốc thời gian quá khứ cụ thể."],
+    "examples": ["I visited Hanoi last summer.", "She did not call me yesterday."]
+  },
+  {
+    "id": "past_continuous",
+    "name_en": "Past Continuous",
+    "name_vi": "Thì Quá khứ tiếp diễn",
+    "category": "past",
+    "group": "continuous",
+    "timeline_pos": { "zone": "past", "style_left": "5%", "style_width": "28%" },
+    "has_stop_marker": true,
+    "summary": "Diễn tả hành động đang diễn ra tại một thời điểm hoặc bị một hành động khác xen vào trong quá khứ.",
+    "structures": {
+      "normal_verb": { "pos": "S + was/were + V-ing", "neg": "S + was/were not + V-ing", "ques": "Was/Were + S + V-ing?" },
+      "to_be": { "pos": "S + was/were + being + ...", "neg": "S + was/were not + being + ...", "ques": "Was/Were + S + being + ...?" }
+    },
+    "signals": ["at 8 p.m. yesterday", "at that time", "while", "when"],
+    "special_usages": ["Mô tả bối cảnh đang diễn ra khi một sự kiện khác xảy ra.", "Hai hành động cùng diễn ra song song trong quá khứ."],
+    "examples": ["I was reading when she arrived.", "They were not sleeping at midnight."]
+  },
+  {
+    "id": "past_perfect",
+    "name_en": "Past Perfect",
+    "name_vi": "Thì Quá khứ hoàn thành",
+    "category": "past",
+    "group": "perfect",
+    "timeline_pos": { "zone": "past", "style_left": "5%", "style_width": "20%" },
+    "has_stop_marker": true,
+    "summary": "Diễn tả hành động xảy ra trước một hành động hoặc mốc khác trong quá khứ.",
+    "structures": {
+      "normal_verb": { "pos": "S + had + V3/ed", "neg": "S + had not + V3/ed", "ques": "Had + S + V3/ed?" },
+      "to_be": { "pos": "S + had been + ...", "neg": "S + had not been + ...", "ques": "Had + S + been + ...?" }
+    },
+    "signals": ["before", "after", "by the time", "already", "just", "until then"],
+    "special_usages": ["Làm rõ thứ tự trước-sau của hai sự kiện quá khứ.", "Thường đi với before, after hoặc by the time."],
+    "examples": ["She had left before I arrived.", "Had they finished the work?"]
+  },
+  {
+    "id": "past_perfect_continuous",
+    "name_en": "Past Perfect Continuous",
+    "name_vi": "Thì Quá khứ hoàn thành tiếp diễn",
+    "category": "past",
+    "group": "perfect_continuous",
+    "timeline_pos": { "zone": "past", "style_left": "5%", "style_width": "28%" },
+    "has_stop_marker": true,
+    "vertical_offset": "up",
+    "is_ongoing": false,
+    "summary": "Nhấn mạnh một hành động đã diễn ra liên tục trong bao lâu trước một mốc quá khứ.",
+    "structures": {
+      "normal_verb": { "pos": "S + had been + V-ing", "neg": "S + had not been + V-ing", "ques": "Had + S + been + V-ing?" },
+      "to_be": { "pos": "S + had been being + ...", "neg": "S + had not been being + ...", "ques": "Had + S + been being + ...?" }
+    },
+    "signals": ["for", "since", "before", "until", "how long"],
+    "special_usages": ["Nhấn mạnh thời lượng liên tục trước một sự kiện quá khứ.", "Giải thích nguyên nhân của một trạng thái trong quá khứ."],
+    "examples": ["He had been working for three hours.", "It had been raining before we left."]
+  },
+  {
+    "id": "present_simple",
+    "name_en": "Present Simple",
+    "name_vi": "Thì Hiện tại đơn",
+    "category": "present",
+    "group": "simple",
+    "timeline_pos": { "zone": "present", "style_left": "34%", "style_width": "18%" },
+    "has_stop_marker": true,
+    "summary": "Diễn tả thói quen, sự thật hiển nhiên, lịch trình và trạng thái ổn định ở hiện tại.",
+    "structures": {
+      "normal_verb": { "pos": "S + V(s/es)", "neg": "S + do/does not + V", "ques": "Do/Does + S + V?" },
+      "to_be": { "pos": "S + am/is/are + ...", "neg": "S + am/is/are not + ...", "ques": "Am/Is/Are + S + ...?" }
+    },
+    "signals": ["always", "usually", "often", "every day", "sometimes", "never"],
+    "special_usages": ["Nói về thói quen và lịch trình cố định.", "Trình bày sự thật, quy luật hoặc cảm xúc/trạng thái."],
+    "examples": ["Water boils at 100°C.", "She does not drink coffee."]
+  },
+  {
+    "id": "present_continuous",
+    "name_en": "Present Continuous",
+    "name_vi": "Thì Hiện tại tiếp diễn",
+    "category": "present",
+    "group": "continuous",
+    "timeline_pos": { "zone": "present", "style_left": "34%", "style_width": "38%" },
+    "has_stop_marker": false,
+    "is_ongoing": true,
+    "summary": "Diễn tả hành động đang xảy ra tại thời điểm nói hoặc xung quanh thời điểm nói.",
+    "structures": {
+      "normal_verb": { "pos": "S + am/is/are + V-ing", "neg": "S + am/is/are + not + V-ing", "ques": "Am/Is/Are + S + V-ing?" },
+      "to_be": { "pos": "S + am/is/are + being + ...", "neg": "S + am/is/are not + being + ...", "ques": "Am/Is/Are + S + being + ...?" }
+    },
+    "signals": ["now", "at the moment", "Look!", "Listen!", "these days", "this week"],
+    "special_usages": ["Diễn tả hành động đang diễn ra ngay lúc nói.", "Diễn tả một sự thay đổi hoặc xu hướng ở hiện tại."],
+    "examples": ["I am learning English now.", "The computer is not responding."]
+  },
+  {
+    "id": "present_perfect",
+    "name_en": "Present Perfect",
+    "name_vi": "Thì Hiện tại hoàn thành",
+    "category": "present",
+    "group": "perfect",
+    "timeline_pos": { "zone": "present", "style_left": "34%", "style_width": "32%" },
+    "has_stop_marker": true,
+    "summary": "Diễn tả trải nghiệm, kết quả hoặc hành động bắt đầu trong quá khứ và còn liên quan đến hiện tại.",
+    "structures": {
+      "normal_verb": { "pos": "S + have/has + V3/ed", "neg": "S + have/has not + V3/ed", "ques": "Have/Has + S + V3/ed?" },
+      "to_be": { "pos": "S + have/has been + ...", "neg": "S + have/has not been + ...", "ques": "Have/Has + S + been + ...?" }
+    },
+    "signals": ["since", "for", "already", "just", "yet", "ever", "never", "recently"],
+    "special_usages": ["Nói về trải nghiệm không nêu thời điểm cụ thể.", "Nhấn mạnh kết quả hiện tại của hành động quá khứ."],
+    "examples": ["I have visited Japan twice.", "She has not finished her report yet."]
+  },
+  {
+    "id": "present_perfect_continuous",
+    "name_en": "Present Perfect Continuous",
+    "name_vi": "Thì Hiện tại hoàn thành tiếp diễn",
+    "category": "present",
+    "group": "perfect_continuous",
+    "timeline_pos": { "zone": "present", "style_left": "5%", "style_width": "68%" },
+    "has_stop_marker": false,
+    "vertical_offset": "down",
+    "is_ongoing": true,
+    "summary": "Nhấn mạnh hành động bắt đầu trong quá khứ và vẫn đang tiếp diễn hoặc vừa mới kết thúc với dấu hiệu rõ ràng.",
+    "structures": {
+      "normal_verb": { "pos": "S + have/has been + V-ing", "neg": "S + have/has not been + V-ing", "ques": "Have/Has + S + been + V-ing?" },
+      "to_be": { "pos": "S + have/has been being + ...", "neg": "S + have/has not been being + ...", "ques": "Have/Has + S + been being + ...?" }
+    },
+    "signals": ["for", "since", "all day", "lately", "recently", "how long"],
+    "special_usages": ["Nhấn mạnh thời lượng của hành động kéo dài đến hiện tại.", "Giải thích dấu hiệu hoặc kết quả vừa xảy ra."],
+    "examples": ["They have been waiting for an hour.", "It has been raining all morning."]
+  },
+  {
+    "id": "future_simple",
+    "name_en": "Future Simple",
+    "name_vi": "Thì Tương lai đơn",
+    "category": "future",
+    "group": "simple",
+    "timeline_pos": { "zone": "future", "style_left": "67%", "style_width": "22%" },
+    "has_stop_marker": true,
+    "summary": "Diễn tả dự đoán, lời hứa, lời đề nghị hoặc quyết định bộc phát về tương lai.",
+    "structures": {
+      "normal_verb": { "pos": "S + will + V", "neg": "S + will not + V", "ques": "Will + S + V?" },
+      "to_be": { "pos": "S + will be + ...", "neg": "S + will not be + ...", "ques": "Will + S + be + ...?" }
+    },
+    "signals": ["tomorrow", "next week", "soon", "in the future", "I think", "I hope"],
+    "special_usages": ["Quyết định bộc phát tại thời điểm nói.", "Đưa ra dự đoán cá nhân hoặc lời hứa."],
+    "examples": ["I will help you with that.", "I think it will rain tomorrow."]
+  },
+  {
+    "id": "future_continuous",
+    "name_en": "Future Continuous",
+    "name_vi": "Thì Tương lai tiếp diễn",
+    "category": "future",
+    "group": "continuous",
+    "timeline_pos": { "zone": "future", "style_left": "67%", "style_width": "30%" },
+    "has_stop_marker": false,
+    "is_ongoing": true,
+    "summary": "Diễn tả hành động sẽ đang diễn ra tại một thời điểm xác định trong tương lai.",
+    "structures": {
+      "normal_verb": { "pos": "S + will be + V-ing", "neg": "S + will not be + V-ing", "ques": "Will + S + be + V-ing?" },
+      "to_be": { "pos": "S + will be being + ...", "neg": "S + will not be being + ...", "ques": "Will + S + be being + ...?" }
+    },
+    "signals": ["at this time tomorrow", "this time next week", "when", "while"],
+    "special_usages": ["Thông báo thông tin về lịch trình tương lai.", "Hỏi mượn đồ hoặc hỏi kế hoạch một cách lịch sự: Will you be using your laptop tonight?"],
+    "examples": ["At 9 p.m., I will be studying.", "Will you be using your laptop tonight?"]
+  },
+  {
+    "id": "future_perfect",
+    "name_en": "Future Perfect",
+    "name_vi": "Thì Tương lai hoàn thành",
+    "category": "future",
+    "group": "perfect",
+    "timeline_pos": { "zone": "future", "style_left": "72%", "style_width": "23%" },
+    "has_stop_marker": true,
+    "summary": "Diễn tả hành động sẽ hoàn tất trước một thời điểm hoặc hành động khác trong tương lai.",
+    "structures": {
+      "normal_verb": { "pos": "S + will have + V3/ed", "neg": "S + will not have + V3/ed", "ques": "Will + S + have + V3/ed?" },
+      "to_be": { "pos": "S + will have been + ...", "neg": "S + will not have been + ...", "ques": "Will + S + have been + ...?" }
+    },
+    "signals": ["by", "by the time", "before", "by next year", "until"],
+    "special_usages": ["Đặt một mốc hoàn thành trước thời hạn tương lai.", "Dùng để dự đoán trạng thái đã hoàn tất trong tương lai."],
+    "examples": ["She will have graduated by June.", "Will you have finished the project by Friday?"]
+  },
+  {
+    "id": "future_perfect_continuous",
+    "name_en": "Future Perfect Continuous",
+    "name_vi": "Thì Tương lai hoàn thành tiếp diễn",
+    "category": "future",
+    "group": "perfect_continuous",
+    "timeline_pos": { "zone": "future", "style_left": "67%", "style_width": "30%" },
+    "has_stop_marker": false,
+    "is_ongoing": true,
+    "summary": "Nhấn mạnh thời lượng một hành động sẽ kéo dài liên tục đến một mốc trong tương lai.",
+    "structures": {
+      "normal_verb": { "pos": "S + will have been + V-ing", "neg": "S + will not have been + V-ing", "ques": "Will + S + have been + V-ing?" },
+      "to_be": { "pos": "S + will have been being + ...", "neg": "S + will not have been being + ...", "ques": "Will + S + have been being + ...?" }
+    },
+    "signals": ["for", "by the time", "by next month", "when", "how long"],
+    "special_usages": ["Nhấn mạnh khoảng thời gian hành động kéo dài đến một mốc tương lai.", "Thường dùng khi muốn làm nổi bật thời lượng hơn kết quả."],
+    "examples": ["By July, I will have been working here for five years.", "How long will they have been traveling?"]
+  }
+]
