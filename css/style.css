@@ -3,7 +3,6 @@
     --accent-color: #005F73;
     --card-bg: #FFFFFF;
     
-    /* Grammar Color System */
     --c-subj-bg: #D0E1FD;   --c-subj-text: #0D47A1;
     --c-verb-bg: #FAD2E1;   --c-verb-text: #B71C1C;
     --c-obj-bg: #D8F3DC;    --c-obj-text: #1B5E20;
@@ -12,97 +11,91 @@
     --c-aux-bg: #FFE4E1;    --c-aux-text: #8B0000;
     
     --transition-speed: 0.3s;
+    --dim-opacity: 0.25; /* Biến điều khiển độ mờ */
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Inter', sans-serif;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
 
 body {
-    background-color: var(--bg-body);
-    color: #333;
-    line-height: 1.6;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem;
+    background-color: var(--bg-body); color: #333; line-height: 1.6;
+    min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; padding: 2rem; position: relative;
 }
 
-header {
-    text-align: center;
-    margin-bottom: 2.5rem;
-    max-width: 800px;
+/* ================= SETTINGS PANEL ================= */
+.settings-wrapper { position: fixed; top: 1.5rem; right: 1.5rem; z-index: 100; }
+.settings-btn {
+    background: white; border: 1px solid #ddd; border-radius: 50%;
+    width: 45px; height: 45px; font-size: 1.2rem; cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.2s;
 }
-
-h1 {
-    color: var(--accent-color);
-    font-size: 2.2rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
+.settings-btn:hover { background: var(--bg-body); transform: rotate(45deg); }
+.settings-panel {
+    position: absolute; top: 55px; right: 0; background: white;
+    padding: 1.2rem; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    width: 260px; display: flex; flex-direction: column; gap: 1rem;
+    opacity: 0; visibility: hidden; transform: translateY(-10px);
+    transition: all 0.3s ease; border: 1px solid #eee;
 }
+.settings-panel.active { opacity: 1; visibility: visible; transform: translateY(0); }
+.setting-item { display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; font-weight: 500; }
+.setting-item input[type="range"] { width: 100px; }
 
+/* Toggle Switch (Viên thuốc) */
+.switch { position: relative; display: inline-block; width: 44px; height: 24px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+    position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc; transition: .4s;
+}
+.slider:before {
+    position: absolute; content: ""; height: 18px; width: 18px;
+    left: 3px; bottom: 3px; background-color: white; transition: .4s;
+}
+input:checked + .slider { background-color: var(--accent-color); }
+input:checked + .slider:before { transform: translateX(20px); }
+.slider.round { border-radius: 24px; }
+.slider.round:before { border-radius: 50%; }
+
+/* ================= MAIN BOARD ================= */
+header { text-align: center; margin-bottom: 2.5rem; max-width: 800px; margin-top: 1rem; }
+h1 { color: var(--accent-color); font-size: 2.2rem; font-weight: 700; margin-bottom: 0.5rem; }
 p.subtitle { color: #666; font-size: 1.1rem; }
 
-.selector-container {
-    width: 100%; max-width: 1000px; margin-bottom: 2rem;
-    display: flex; justify-content: center;
-}
-
+.selector-container { width: 100%; max-width: 1000px; margin-bottom: 2rem; display: flex; justify-content: center; }
 select {
-    appearance: none; width: 100%; max-width: 600px;
-    padding: 1rem 1.5rem; font-size: 1rem; font-weight: 600;
-    color: var(--accent-color); background-color: var(--card-bg);
-    border: 2px solid var(--accent-color); border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); cursor: pointer;
-    outline: none; transition: all var(--transition-speed);
+    appearance: none; width: 100%; max-width: 600px; padding: 1rem 1.5rem; font-size: 1rem; font-weight: 600;
+    color: var(--accent-color); background-color: var(--card-bg); border: 2px solid var(--accent-color);
+    border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); cursor: pointer; outline: none;
 }
-select:hover, select:focus { box-shadow: 0 6px 12px rgba(0, 95, 115, 0.15); }
 
 .grammar-board-wrapper {
-    position: relative; width: 100%; max-width: 1100px;
-    background: var(--card-bg); border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05); padding: 2rem;
-    min-height: 500px;
+    position: relative; width: 100%; max-width: 1100px; background: var(--card-bg);
+    border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); padding: 2rem; min-height: 500px;
 }
-
-#svg-canvas {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    pointer-events: none; z-index: 10;
-}
-
-.grammar-board {
-    display: flex; flex-direction: column; gap: 2.5rem;
-    position: relative; z-index: 2;
-}
-
+#svg-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 10; }
+.grammar-board { display: flex; flex-direction: column; gap: 2.5rem; position: relative; z-index: 2; }
 .lang-row { display: flex; align-items: center; gap: 1.5rem; }
-
 .lang-label {
-    min-width: 130px; font-weight: 700; color: var(--accent-color);
-    font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;
-    display: flex; align-items: center; gap: 0.5rem;
+    min-width: 130px; font-weight: 700; color: var(--accent-color); font-size: 1.1rem;
+    text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 0.5rem;
 }
-.lang-label span.badge {
-    background: var(--accent-color); color: white;
-    padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem;
-}
+.lang-label span.badge { background: var(--accent-color); color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; }
 
 .sentence-blocks { display: flex; flex-wrap: wrap; gap: 0.75rem; flex: 1; }
 
 .block {
-    display: inline-flex; align-items: center; padding: 0.6rem 1rem;
-    border-radius: 8px; font-size: 1.1rem; font-weight: 500;
-    cursor: pointer; transition: all var(--transition-speed);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05); position: relative;
-    border: 2px solid transparent;
+    display: inline-flex; flex-direction: column; justify-content: center; align-items: center;
+    padding: 0.6rem 1rem; border-radius: 8px; font-size: 1.1rem; font-weight: 500; cursor: pointer;
+    transition: all var(--transition-speed); box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 2px solid transparent; position: relative;
 }
 .block:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-
+.block-main { display: flex; align-items: center; }
 .block-label { font-weight: 700; margin-right: 0.4rem; font-size: 0.9rem; opacity: 0.8; }
+
+/* Phiên âm trực tiếp */
+.block-phonetic { display: none; font-size: 0.8rem; opacity: 0.7; margin-top: 0.3rem; font-style: italic; }
+.show-phonetics .block-phonetic { display: block; }
 
 .tag-subj { background-color: var(--c-subj-bg); color: var(--c-subj-text); }
 .tag-verb { background-color: var(--c-verb-bg); color: var(--c-verb-text); }
@@ -111,52 +104,24 @@ select:hover, select:focus { box-shadow: 0 6px 12px rgba(0, 95, 115, 0.15); }
 .tag-modal { background-color: var(--c-modal-bg); color: var(--c-modal-text); }
 .tag-aux { background-color: var(--c-aux-bg); color: var(--c-aux-text); }
 
-.board-hovering .block { opacity: 0.25; filter: grayscale(0.5); }
-.board-hovering .block.active {
-    opacity: 1; filter: grayscale(0); border-color: currentColor;
-    transform: scale(1.02); z-index: 100;
-}
+.board-hovering .block { opacity: var(--dim-opacity); filter: grayscale(0.5); }
+.board-hovering .block.active { opacity: 1; filter: grayscale(0); border-color: currentColor; transform: scale(1.02); z-index: 100; }
 
-.connector-path {
-    stroke-dasharray: 1000; stroke-dashoffset: 1000;
-    animation: drawLine 0.5s ease forwards;
-}
+.connector-path { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: drawLine 0.5s ease forwards; }
 @keyframes drawLine { to { stroke-dashoffset: 0; } }
 
-.instruction {
-    text-align: center; margin-top: 2rem; color: #777;
-    font-size: 0.95rem; display: flex; align-items: center;
-    justify-content: center; gap: 0.5rem;
-}
+.instruction { text-align: center; margin-top: 2rem; color: #777; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
 .instruction svg { fill: #777; }
 
-/* Modal Overlay Styles (Giữ từ bản trước) */
-.modal-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.5); display: flex; justify-content: center;
-    align-items: center; z-index: 1000; opacity: 0; visibility: hidden;
-    transition: all 0.3s ease; backdrop-filter: blur(2px);
-}
+/* Modal Overlay (giữ nguyên) */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.3s ease; backdrop-filter: blur(2px); }
 .modal-overlay.active { opacity: 1; visibility: visible; }
-.modal-content {
-    background: white; width: 90%; max-width: 450px; border-radius: 16px;
-    padding: 2rem; position: relative; transform: translateY(20px);
-    transition: transform 0.3s ease; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
+.modal-content { background: white; width: 90%; max-width: 450px; border-radius: 16px; padding: 2rem; position: relative; transform: translateY(20px); transition: transform 0.3s ease; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
 .modal-overlay.active .modal-content { transform: translateY(0); }
-.close-btn {
-    position: absolute; top: 1rem; right: 1rem; background: none; border: none;
-    font-size: 1.5rem; cursor: pointer; color: #888;
-}
+.close-btn { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #888; }
 .modal-header { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
 .modal-lang-badge { background: var(--accent-color); color: white; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
 .modal-tag-badge { background: var(--bg-body); color: #333; border: 1px solid #ccc; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
 .modal-word { font-size: 1.8rem; color: var(--accent-color); margin-bottom: 0.2rem; }
 .modal-phonetic { font-size: 1rem; color: #666; font-style: italic; margin-bottom: 1.5rem; }
 .modal-explanation-text { font-size: 1rem; line-height: 1.6; color: #333; }
-
-@media (max-width: 768px) {
-    .lang-row { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
-    .lang-label { margin-bottom: 0.25rem; }
-    .sentence-blocks { margin-bottom: 1.5rem; }
-}
