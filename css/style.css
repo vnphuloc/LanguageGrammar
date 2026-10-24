@@ -275,11 +275,11 @@ select { appearance: none; width: 100%; padding: 1rem 1.5rem; font-size: 1rem; f
     .transform-kicker { color: var(--accent-color); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.18em; }
     .transform-header h2 { margin: 0.35rem 0; color: var(--accent-color); font-size: 1.8rem; }
     .transform-header p { color: #6b7c80; font-size: 0.92rem; }
-    .transform-selector-panel { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; width: 100%; max-width: 1100px; margin-bottom: 1rem; padding: 1rem 1.25rem; border: 1px solid #dce8e9; border-radius: 14px; background: rgba(255,255,255,0.8); box-shadow: 0 6px 18px rgba(0,95,115,0.05); }
+    .transform-selector-panel { display: flex; align-items: center; justify-content: space-between; gap: 0.85rem; width: 100%; max-width: 1100px; margin-bottom: 1rem; padding: 0.75rem 1rem; border: 1px solid #dce8e9; border-radius: 14px; background: rgba(255,255,255,0.8); box-shadow: 0 6px 18px rgba(0,95,115,0.05); }
     .transform-panel-label { color: var(--accent-color); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.14em; }
     .transform-selector-panel p { color: #839497; font-size: 0.75rem; }
-    .verb-selector { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.45rem; }
-    .verb-choice { padding: 0.55rem 0.85rem; border: 1px solid #c9dcdf; border-radius: 9px; background: #f8fcfc; color: #45666d; cursor: pointer; font: 700 0.82rem 'Inter', sans-serif; transition: all var(--transition-speed); }
+    .verb-selector { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.3rem; }
+    .verb-choice { padding: 4px 10px; border: 1px solid #c9dcdf; border-radius: 9px; background: #f8fcfc; color: #45666d; cursor: pointer; font: 700 clamp(0.72rem, 1.2vw, 0.82rem) 'Inter', sans-serif; transition: all var(--transition-speed); }
     .verb-choice:hover, .verb-choice.active { border-color: var(--accent-color); background: var(--accent-color); color: white; box-shadow: 0 4px 10px rgba(0,95,115,0.18); }
     .transform-board { position: relative; display: grid; grid-template-columns: 132px 1fr; grid-template-rows: 58px auto; width: 100%; max-width: 1100px; overflow: hidden; border: 1px solid #dce8e9; border-radius: 16px; background: var(--card-bg); box-shadow: 0 10px 30px rgba(0,0,0,0.06); }
     .transform-axis-corner { display: flex; align-items: center; justify-content: center; gap: 0.35rem; border-right: 1px solid #dce8e9; border-bottom: 1px solid #dce8e9; color: #668086; font-size: 0.65rem; font-weight: 800; letter-spacing: 0.12em; }
@@ -314,6 +314,7 @@ select { appearance: none; width: 100%; padding: 1rem 1.5rem; font-size: 1rem; f
 }
     .form-badge-ing { background: #d0e1fd; color: #0d47a1; }
     .transform-real-form em { color: #9aadb0; font-size: 0.67rem; font-style: normal; font-weight: 600; }
+    .transform-example { display: block; min-height: 2.25rem; margin-top: 0.15rem; color: #71878b; font-size: 0.82rem; font-style: italic; font-weight: 500; line-height: 1.35; }
     .usage-badge { display: inline-flex; margin-top: 0.7rem; padding: 0.22rem 0.4rem; border-radius: 5px; background: #e7f4f4; color: var(--accent-color); font-size: 0.62rem; font-weight: 800; }
     .transform-connections { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
     .transform-connections path { fill: none; stroke: #48a3ad; stroke-width: 2; stroke-dasharray: 5 4; marker-end: url(#transform-arrow); opacity: 0.75; }
@@ -357,7 +358,7 @@ select { appearance: none; width: 100%; padding: 1rem 1.5rem; font-size: 1rem; f
         .transform-header { margin-top: 2.5rem; text-align: center; }
         .transform-header h2 { font-size: 1.35rem; }
         .transform-selector-panel { padding: 0.85rem; }
-        .verb-choice { flex: 1 1 calc(33.33% - 0.45rem); padding: 0.5rem 0.35rem; }
+        .verb-choice { flex: 1 1 calc(33.33% - 0.45rem); padding: 4px 8px; }
         .transform-detail-content { padding: 1.35rem; }
         .transform-rating-grid { grid-template-columns: 1fr; }
     }
@@ -501,7 +502,7 @@ body:not(.show-labels) .tense-sub {
 .transform-selector-panel {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 10px;
     justify-content: space-between;
     align-items: center;
 }
@@ -509,7 +510,7 @@ body:not(.show-labels) .tense-sub {
 .selector-group {
     display: flex;
     align-items: center;
-    gap: 15px;
+gap: 10px;
     flex-wrap: wrap;
 }
 

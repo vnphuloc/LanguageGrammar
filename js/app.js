@@ -65,7 +65,7 @@ const closeTenseDetailBtn = document.getElementById('closeTenseDetailBtn');
 let timelineData = [];
 let transformData = [];
 let selectedVerb = VERB_SAMPLES[0];
-let selectedSubject = 'default'; // 'default', 'singular', 'plural'
+let selectedSubject = 'default'; // 'default', 'i', 'singular', 'plural'
 const isTouchDevice = window.matchMedia('(hover: none)').matches;let currentView = 'matrix';
 const helpModal = document.getElementById('helpModal');
 const helpToggleBtn = document.getElementById('helpToggleBtn');
@@ -253,7 +253,30 @@ function setupTransformView() {
     function getTransformedVerb(tense) {
     const verb = selectedVerb;
     
-    // 1. Nếu chọn SỐ ÍT (He / She / It)
+    // 1. Nếu chọn chủ ngữ I
+    if (selectedSubject === 'i') {
+        const formsI = {
+            past_simple: `${verb.past} [V2]`,
+            past_continuous: `was ${verb.ing} [V-ing]`,
+            past_perfect: `had ${verb.participle} [V3]`,
+            past_perfect_continuous: `had been ${verb.ing} [V-ing]`,
+            present_simple: `${verb.base} [V1]`,
+            present_continuous: `am ${verb.ing} [V-ing]`,
+            present_perfect: `have ${verb.participle} [V3]`,
+            present_perfect_continuous: `have been ${verb.ing} [V-ing]`,
+            future_simple: `will ${verb.base} [V1]`,
+            future_continuous: `will be ${verb.ing} [V-ing]`,
+            future_perfect: `will have ${verb.participle} [V3]`,
+            future_perfect_continuous: `will have been ${verb.ing} [V-ing]`,
+            future_in_past_simple: `would ${verb.base} [V1]`,
+            future_in_past_continuous: `would be ${verb.ing} [V-ing]`,
+            future_in_past_perfect: `would have ${verb.participle} [V3]`,
+            future_in_past_perfect_continuous: `would have been ${verb.ing} [V-ing]`
+        };
+        return formsI[tense.id] || '';
+    }
+
+    // 2. Nếu chọn SỐ ÍT (He / She / It)
     if (selectedSubject === 'singular') {
         const formsSingular = {
             past_simple: `${verb.past} [V2]`,
@@ -276,7 +299,7 @@ function setupTransformView() {
         return formsSingular[tense.id] || '';
     }
 
-    // 2. Nếu chọn SỐ NHIỀU (They / We / You)
+    // 3. Nếu chọn SỐ NHIỀU (They / We / You)
     if (selectedSubject === 'plural') {
         const formsPlural = {
             past_simple: `${verb.past} [V2]`,
@@ -299,7 +322,7 @@ function setupTransformView() {
         return formsPlural[tense.id] || '';
     }
 
-    // 3. MẶC ĐỊNH (Hiển thị dạng tổng quát như hiện tại)
+    // 4. MẶC ĐỊNH (Hiển thị dạng tổng quát như hiện tại)
     const formsDefault = {
         past_simple: `${verb.past} [V2]`,
         past_continuous: `was/were ${verb.ing} [V-ing]`,
@@ -320,6 +343,36 @@ function setupTransformView() {
     };
     return formsDefault[tense.id] || '';
 }
+
+    function getTransformExample(tense) {
+        if (selectedSubject === 'default') return '';
+
+        const verb = selectedVerb;
+        const subject = {
+            i: 'I',
+            singular: 'He',
+            plural: 'They'
+        }[selectedSubject];
+        const forms = {
+            past_simple: `${subject} ${verb.past} yesterday.`,
+            past_continuous: `${subject} ${selectedSubject === 'singular' || selectedSubject === 'i' ? 'was' : 'were'} ${verb.ing} when you called.`,
+            past_perfect: `${subject} had ${verb.participle} the feature before the demo.`,
+            past_perfect_continuous: `${subject} had been ${verb.ing} for hours before the bug appeared.`,
+            present_simple: `${subject} ${selectedSubject === 'singular' ? verb.thirdPerson : verb.base} every day.`,
+            present_continuous: `${subject} ${selectedSubject === 'i' ? 'am' : selectedSubject === 'singular' ? 'is' : 'are'} ${verb.ing} right now.`,
+            present_perfect: `${subject} ${selectedSubject === 'singular' ? 'has' : 'have'} ${verb.participle} this feature.`,
+            present_perfect_continuous: `${subject} ${selectedSubject === 'singular' ? 'has' : 'have'} been ${verb.ing} for two hours.`,
+            future_simple: `${subject} will ${verb.base} tomorrow.`,
+            future_continuous: `${subject} will be ${verb.ing} at 8 p.m.`,
+            future_perfect: `${subject} will have ${verb.participle} the feature by Friday.`,
+            future_perfect_continuous: `${subject} will have been ${verb.ing} for two hours by noon.`,
+            future_in_past_simple: `${subject} would ${verb.base} the fix.`,
+            future_in_past_continuous: `${subject} would be ${verb.ing} late.`,
+            future_in_past_perfect: `${subject} would have ${verb.participle} it by Monday.`,
+            future_in_past_perfect_continuous: `${subject} would have been ${verb.ing} for hours.`
+        };
+        return forms[tense.id] || '';
+    }
 
     function renderTransformMatrix() {
         const grid = document.getElementById('transform-grid');
@@ -345,7 +398,8 @@ function setupTransformView() {
                 cell.dataset.col = String(colIndex);
                 cell.dataset.tenseId = tense.id;
                 cell.dataset.time = time;
-                cell.innerHTML = `<h3>${tense.title_en}</h3><span class="cell-vi">${tense.title_vi}</span><code class="transform-formula">${tense.formula}</code><strong class="transform-real-form">${formatTransformedVerb(getTransformedVerb(tense))}</strong><span class="usage-badge">Thông dụng: ${tense.ratings.daily.score}/10</span>`;
+                const example = getTransformExample(tense);
+                cell.innerHTML = `<h3>${tense.title_en}</h3><span class="cell-vi">${tense.title_vi}</span><code class="transform-formula">${tense.formula}</code><strong class="transform-real-form">${formatTransformedVerb(getTransformedVerb(tense))}</strong>${example ? `<span class="transform-example">${example}</span>` : ''}<span class="usage-badge">Thông dụng: ${tense.ratings.daily.score}/10</span>`;
                 cell.addEventListener('mouseenter', () => handleTransformHover(cell));
                 cell.addEventListener('focus', () => handleTransformHover(cell));
                 cell.addEventListener('mouseleave', clearTransformHover);
