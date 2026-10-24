@@ -12,7 +12,15 @@ const closeBtn = document.getElementById('closeModal');
 const LANG_MAP = { 'en': 'English', 'vi': 'Tiếng Việt', 'zh': '中文', 'ja': '日本語' };
 const LANG_TYPE = { 'en': 'SVO', 'vi': 'SVO', 'zh': 'S-Time-VO', 'ja': 'SOV' };
 
+// Settings Elements
+const settingsToggleBtn = document.getElementById('settingsToggleBtn');
+const settingsPanel = document.getElementById('settingsPanel');
+const dimSlider = document.getElementById('dimSlider');
+const phoneticToggle = document.getElementById('phoneticToggle');
+
 async function init() {
+    setupSettings();
+
     try {
         const res = await fetch(API_URL);
         contextsData = await res.json();
@@ -30,16 +38,41 @@ async function init() {
             if(e.target === modalOverlay) closeModal();
         });
 
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(() => {
-                if (currentActiveTag) window.svgDrawer.drawConnectionsForTag(currentActiveTag);
-            }, 100);
-        });
+        window.addEventListener('resize', redrawLinesOnLayoutChange);
     } catch (error) {
         console.error("Lỗi tải JSON:", error);
         selector.innerHTML = '<option>Lỗi tải dữ liệu!</option>';
     }
+}
+
+function setupSettings() {
+    // Đóng/Mở Panel Settings
+    settingsToggleBtn.addEventListener('click', () => {
+        settingsPanel.classList.toggle('active');
+    });
+
+    // Cập nhật biến CSS theo Slider
+    dimSlider.addEventListener('input', (e) => {
+        document.documentElement.style.setProperty('--dim-opacity', e.target.value);
+    });
+
+    // Toggle hiển thị phiên âm
+    phoneticToggle.addEventListener('change', (e) => {
+        if (e.target.checked) {
+            board.classList.add('show-phonetics');
+        } else {
+            board.classList.remove('show-phonetics');
+        }
+        // Chiều cao khối thay đổi khi bật/tắt chữ -> Vẽ lại đường nối
+        redrawLinesOnLayoutChange();
+    });
+}
+
+function redrawLinesOnLayoutChange() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+        if (currentActiveTag) window.svgDrawer.drawConnectionsForTag(currentActiveTag);
+    }, 100);
 }
 
 function populateDropdown() {
@@ -82,7 +115,14 @@ function renderContext(contextId) {
             span.dataset.lang = langKey;
             span.dataset.json = JSON.stringify(blockData);
             
-            span.innerHTML = `<span class="block-label">[${blockData.label}]</span> ${blockData.text}`;
+            // Cấu trúc khối chứa phiên âm ẩn
+            span.innerHTML = `
+                <div class="block-main">
+                    <span class="block-label">[${blockData.label}]</span>
+                    <span class="block-text">${blockData.text}</span>
+                </div>
+                ${blockData.phonetic ? `<div class="block-phonetic">${blockData.phonetic}</div>` : ''}
+            `;
             
             span.addEventListener('mouseenter', handleMouseEnter);
             span.addEventListener('mouseleave', handleMouseLeave);
