@@ -16,6 +16,7 @@ const LANG_TYPE = { 'en': 'SVO', 'vi': 'SVO', 'zh': 'S-Time-VO', 'ja': 'SOV' };
 const settingsToggleBtn = document.getElementById('settingsToggleBtn');
 const settingsPanel = document.getElementById('settingsPanel');
 const dimSlider = document.getElementById('dimSlider');
+const fontSlider = document.getElementById('fontSlider');
 const phoneticToggle = document.getElementById('phoneticToggle');
 
 async function init() {
@@ -46,24 +47,27 @@ async function init() {
 }
 
 function setupSettings() {
-    // Đóng/Mở Panel Settings
     settingsToggleBtn.addEventListener('click', () => {
         settingsPanel.classList.toggle('active');
     });
 
-    // Cập nhật biến CSS theo Slider
+    // Chỉnh độ mờ
     dimSlider.addEventListener('input', (e) => {
         document.documentElement.style.setProperty('--dim-opacity', e.target.value);
     });
 
-    // Toggle hiển thị phiên âm
+    // Chỉnh cỡ chữ
+    fontSlider.addEventListener('input', (e) => {
+        document.documentElement.style.setProperty('--block-font-size', e.target.value + 'rem');
+        redrawLinesOnLayoutChange(); // Thay đổi cỡ chữ làm khối phình to ra -> Vẽ lại SVG
+    });
+
     phoneticToggle.addEventListener('change', (e) => {
         if (e.target.checked) {
             board.classList.add('show-phonetics');
         } else {
             board.classList.remove('show-phonetics');
         }
-        // Chiều cao khối thay đổi khi bật/tắt chữ -> Vẽ lại đường nối
         redrawLinesOnLayoutChange();
     });
 }
@@ -115,7 +119,6 @@ function renderContext(contextId) {
             span.dataset.lang = langKey;
             span.dataset.json = JSON.stringify(blockData);
             
-            // Cấu trúc khối chứa phiên âm ẩn
             span.innerHTML = `
                 <div class="block-main">
                     <span class="block-label">[${blockData.label}]</span>
