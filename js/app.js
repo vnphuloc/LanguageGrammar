@@ -1,19 +1,17 @@
-/**
- * app.js - Logic for data loading, rendering, events, and modals
- */
 const API_URL = 'data/contexts.json';
 let contextsData = [];
+let currentActiveTag = null;
+let resizeTimeout;
 
-// DOM Elements
-const selectEl = document.getElementById('contextSelect');
-const wrapperEl = document.getElementById('sentencesWrapper');
+const selector = document.getElementById('context-selector');
+const board = document.getElementById('grammar-board');
+const boardWrapper = document.getElementById('board-wrapper');
+
 const modalOverlay = document.getElementById('explanationModal');
 const closeBtn = document.getElementById('closeModal');
-
-// Lang Maps cho UI hiển thị đẹp
 const LANG_MAP = { 'en': 'English', 'vi': 'Tiếng Việt', 'zh': '中文', 'ja': '日本語' };
+const LANG_TYPE = { 'en': 'SVO', 'vi': 'SVO', 'zh': 'S-Time-VO', 'ja': 'SOV' };
 
-// Initialize App
 async function init() {
     try {
         const res = await fetch(API_URL);
@@ -21,147 +19,109 @@ async function init() {
         
         populateDropdown();
         
-        // Listen to select change
-        selectEl.addEventListener('change', (e) => {
-            renderContext(e.target.value);
-        });
-
-        // Chọn cái đầu tiên làm mặc định
+        selector.addEventListener('change', (e) => renderContext(e.target.value));
         if(contextsData.length > 0) {
-            selectEl.value = contextsData[0].id;
+            selector.value = contextsData[0].id;
             renderContext(contextsData[0].id);
         }
 
-        // Event for closing modal
         closeBtn.addEventListener('click', closeModal);
         modalOverlay.addEventListener('click', (e) => {
             if(e.target === modalOverlay) closeModal();
         });
 
-        // Vẽ lại SVG khi resize cửa sổ
         window.addEventListener('resize', () => {
-            window.svgDrawer.clear();
-            // Xóa highlight nếu đang resize để đỡ lỗi logic UI
-            document.querySelectorAll('.word-block').forEach(b => {
-                b.classList.remove('highlighted', 'faded');
-            });
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                if (currentActiveTag) window.svgDrawer.drawConnectionsForTag(currentActiveTag);
+            }, 100);
         });
-
     } catch (error) {
-        console.error("Lỗi khi tải dữ liệu json:", error);
-        selectEl.innerHTML = '<option>Lỗi tải dữ liệu!</option>';
+        console.error("Lỗi tải JSON:", error);
+        selector.innerHTML = '<option>Lỗi tải dữ liệu!</option>';
     }
 }
 
 function populateDropdown() {
-    selectEl.innerHTML = '';
+    selector.innerHTML = '';
     contextsData.forEach(ctx => {
         const opt = document.createElement('option');
         opt.value = ctx.id;
         opt.textContent = ctx.title;
-        selectEl.appendChild(opt);
+        selector.appendChild(opt);
     });
 }
 
 function renderContext(contextId) {
-    // Clear cũ
-    window.svgDrawer.clear();
-    wrapperEl.innerHTML = '';
+    window.svgDrawer.clearSVG();
+    board.innerHTML = '';
+    boardWrapper.classList.remove('board-hovering');
+    currentActiveTag = null;
 
     const context = contextsData.find(c => c.id === contextId);
     if(!context) return;
 
     ['en', 'vi', 'zh', 'ja'].forEach(langKey => {
-        const langData = context.languages[langKey];
-        if(!langData) return;
+        const langBlocks = context.languages[langKey];
+        if(!langBlocks) return;
 
-        // Tạo dòng ngôn ngữ (Row)
         const row = document.createElement('div');
-        row.className = 'lang-row';
+        row.className = `lang-row ${langKey === 'en' ? 'en-row' : ''}`;
+        
+        const labelDiv = document.createElement('div');
+        labelDiv.className = 'lang-label';
+        labelDiv.innerHTML = `${LANG_MAP[langKey]} <span class="badge">${LANG_TYPE[langKey]}</span>`;
+        
+        const blocksDiv = document.createElement('div');
+        blocksDiv.className = 'sentence-blocks';
 
-        const label = document.createElement('div');
-        label.className = 'lang-label';
-        label.textContent = langKey;
-        row.appendChild(label);
-
-        const blocksContainer = document.createElement('div');
-        blocksContainer.className = 'sentence-blocks';
-
-        langData.forEach(block => {
-            const blockEl = createWordBlock(block, langKey);
-            blocksContainer.appendChild(blockEl);
+        langBlocks.forEach(blockData => {
+            const span = document.createElement('span');
+            span.className = `block tag-${blockData.tagId}`;
+            span.dataset.tag = blockData.tagId;
+            span.dataset.lang = langKey;
+            span.dataset.json = JSON.stringify(blockData);
+            
+            span.innerHTML = `<span class="block-label">[${blockData.label}]</span> ${blockData.text}`;
+            
+            span.addEventListener('mouseenter', handleMouseEnter);
+            span.addEventListener('mouseleave', handleMouseLeave);
+            span.addEventListener('click', handleClick);
+            
+            blocksDiv.appendChild(span);
         });
 
-        row.appendChild(blocksContainer);
-        wrapperEl.appendChild(row);
+        row.appendChild(labelDiv);
+        row.appendChild(blocksDiv);
+        board.appendChild(row);
     });
 }
 
-function createWordBlock(data, langCode) {
-    const el = document.createElement('div');
-    el.className = 'word-block';
-    el.setAttribute('data-tag', data.tagId);
-    el.setAttribute('data-lang', langCode);
+function handleMouseEnter(e) {
+    const tagId = e.currentTarget.dataset.tag;
+    currentActiveTag = tagId;
     
-    // Store data in DOM for easy access in events
-    el.dataset.json = JSON.stringify(data);
-
-    el.innerHTML = `
-        <span class="word-label">${data.label}</span>
-        <span class="word-text">${data.text}</span>
-        ${data.phonetic ? `<span class="word-phonetic">${data.phonetic}</span>` : ''}
-    `;
-
-    // Events
-    el.addEventListener('mouseenter', handleHoverEnter);
-    el.addEventListener('mouseleave', handleHoverLeave);
-    el.addEventListener('click', handleClick);
-
-    return el;
-}
-
-// === INTERACTION LOGIC ===
-
-function handleHoverEnter(e) {
-    const target = e.currentTarget;
-    const tagId = target.getAttribute('data-tag');
+    boardWrapper.classList.add('board-hovering');
+    document.querySelectorAll('.block').forEach(el => el.classList.remove('active'));
     
-    const allBlocks = document.querySelectorAll('.word-block');
-    const matchedBlocks = [];
+    const matchedBlocks = document.querySelectorAll(`.block[data-tag="${tagId}"]`);
+    matchedBlocks.forEach(el => el.classList.add('active'));
 
-    // Fade tất cả, Highlight những cái cùng tagId
-    allBlocks.forEach(b => {
-        if(b.getAttribute('data-tag') === tagId) {
-            b.classList.add('highlighted');
-            matchedBlocks.push(b);
-        } else {
-            b.classList.add('faded');
-        }
-    });
-
-    // Vẽ kết nối SVG
-    window.svgDrawer.connectElements(matchedBlocks);
+    window.svgDrawer.drawConnectionsForTag(tagId);
 }
 
-function handleHoverLeave(e) {
-    const allBlocks = document.querySelectorAll('.word-block');
-    allBlocks.forEach(b => {
-        b.classList.remove('highlighted', 'faded');
-    });
-    window.svgDrawer.clear();
+function handleMouseLeave(e) {
+    boardWrapper.classList.remove('board-hovering');
+    document.querySelectorAll('.block').forEach(el => el.classList.remove('active'));
+    window.svgDrawer.clearSVG();
+    currentActiveTag = null;
 }
 
 function handleClick(e) {
     const target = e.currentTarget;
-    const langCode = target.getAttribute('data-lang');
+    const langCode = target.dataset.lang;
     const data = JSON.parse(target.dataset.json);
 
-    openModal(data, langCode);
-}
-
-// === MODAL LOGIC ===
-
-function openModal(data, langCode) {
     document.getElementById('modalLang').textContent = LANG_MAP[langCode];
     document.getElementById('modalTagLabel').textContent = `${data.label} (${data.tagId.toUpperCase()})`;
     document.getElementById('modalWord').textContent = data.text;
@@ -175,5 +135,4 @@ function closeModal() {
     modalOverlay.classList.remove('active');
 }
 
-// Khởi động
 document.addEventListener('DOMContentLoaded', init);
