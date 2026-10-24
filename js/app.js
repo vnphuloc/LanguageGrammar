@@ -3,6 +3,7 @@ let contextsData = [];
 let currentActiveTag = null;
 let resizeTimeout;
 
+const labelToggle = document.getElementById('labelToggle');
 const selector = document.getElementById('context-selector');
 const board = document.getElementById('grammar-board');
 const boardWrapper = document.getElementById('board-wrapper');
@@ -70,6 +71,18 @@ function setupSettings() {
         }
         redrawLinesOnLayoutChange();
     });
+    if (labelToggle.checked) {
+        board.classList.add('show-labels');
+    }
+
+    labelToggle.addEventListener('change', (e) => {
+        if (e.target.checked) {
+            board.classList.add('show-labels');
+        } else {
+            board.classList.remove('show-labels');
+        }
+        redrawLinesOnLayoutChange();
+    });
 }
 
 function redrawLinesOnLayoutChange() {
@@ -121,10 +134,10 @@ function renderContext(contextId) {
             
             span.innerHTML = `
                 <div class="block-main">
-                    <span class="block-label">[${blockData.label}]</span>
                     <span class="block-text">${blockData.text}</span>
+                    <span class="block-label">[${blockData.label}]</span>
                 </div>
-                ${blockData.phonetic ? `<div class="block-phonetic">${blockData.phonetic}</div>` : ''}
+                ${blockData.phonetic ? `<span class="block-phonetic">${blockData.phonetic}</span>` : ''}
             `;
             
             span.addEventListener('mouseenter', handleMouseEnter);
