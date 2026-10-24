@@ -133,7 +133,6 @@ function renderContext(contextId) {
             span.dataset.json = JSON.stringify(blockData);
             
             span.innerHTML = `
-                <div class="block-main">
                     <span class="block-text">${blockData.text}</span>
                     <span class="block-label">[${blockData.label}]</span>
                 </div>
