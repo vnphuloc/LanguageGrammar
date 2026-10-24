@@ -18,7 +18,7 @@ class SvgDrawer {
         path.setAttribute('stroke', 'var(--accent-color)');
         path.setAttribute('stroke-width', '2.5');
         path.setAttribute('marker-end', 'url(#arrow)');
-        path.classList.add('connector-path'); // CSS nhận style nét đứt ở đây
+        path.classList.add('connector-path');
         
         this.svgCanvas.appendChild(path);
     }
@@ -44,15 +44,18 @@ class SvgDrawer {
             const startY = startRect.bottom - wrapperRect.top;
 
             const endX = endRect.left + (endRect.width / 2) - wrapperRect.left;
-            // Xóa đi đoạn -4px vì marker refX="9.5" đã làm phần mũi tên chạm chuẩn tới endRect.top
             const endY = endRect.top - wrapperRect.top;
 
+            const diffX = endX - startX;
             const diffY = Math.abs(endY - startY);
             
+            // Điểm uốn 1: Giữ hướng xuất phát dọc xuống để nét đứt rời khỏi khối gọn gàng
             const cp1x = startX;
             const cp1y = startY + (diffY * 0.4);
-            const cp2x = endX;
-            const cp2y = endY - (diffY * 0.4);
+            
+            // Điểm uốn 2: Trượt nhẹ theo trục X và Y để đường kẻ đi vào đích theo góc chéo
+            const cp2x = endX - (diffX * 0.3);
+            const cp2y = endY - (diffY * 0.3);
 
             this.createSVGPath(startX, startY, cp1x, cp1y, cp2x, cp2y, endX, endY);
         }
