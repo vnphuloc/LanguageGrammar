@@ -1,0 +1,14 @@
+# Bỏ qua thư mục chứa thư viện (thường rất nặng, chứa hàng vạn file)
+node_modules/
+
+# Bỏ qua các file log (nhật ký hệ thống hoặc lỗi tự sinh)
+*.log
+npm-debug.log*
+
+# Bỏ qua các file rác ẩn do hệ điều hành tự tạo (macOS / Windows)
+.DS_Store
+Thumbs.db
+
+# Bỏ qua thư mục chứa mã đã biên dịch (nếu có dùng các công cụ build)
+dist/
+build/

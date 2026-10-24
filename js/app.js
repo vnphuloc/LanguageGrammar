@@ -276,7 +276,7 @@ async function init() {
                 cell.dataset.col = String(colIndex);
                 cell.dataset.tenseId = tense.id;
                 cell.dataset.time = time;
-                cell.innerHTML = `<h3>${tense.title_en}</h3><span class="cell-vi">${tense.title_vi}</span><code class="transform-formula">${tense.formula}</code><strong class="transform-real-form">${formatTransformedVerb(getTransformedVerb(tense))}</strong><span class="usage-badge">Dùng: ${tense.ratings.daily.score}/10</span>`;
+                cell.innerHTML = `<h3>${tense.title_en}</h3><span class="cell-vi">${tense.title_vi}</span><code class="transform-formula">${tense.formula}</code><strong class="transform-real-form">${formatTransformedVerb(getTransformedVerb(tense))}</strong><span class="usage-badge">Thông dụng: ${tense.ratings.daily.score}/10</span>`;
                 cell.addEventListener('mouseenter', () => handleTransformHover(cell));
                 cell.addEventListener('focus', () => handleTransformHover(cell));
                 cell.addEventListener('mouseleave', clearTransformHover);
