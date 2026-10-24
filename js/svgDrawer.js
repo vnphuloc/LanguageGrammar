@@ -1,71 +1,61 @@
-/**
- * svgDrawer.js - Handles drawing Bezier curves between HTML elements.
- */
 class SvgDrawer {
-    constructor(svgId) {
-        this.svg = document.getElementById(svgId);
-        this.container = document.getElementById('matrixContainer');
+    constructor(svgId, wrapperId) {
+        this.svgCanvas = document.getElementById(svgId);
+        this.boardWrapper = document.getElementById(wrapperId);
     }
 
-    clear() {
-        // Keep the <defs> (arrowhead), remove only paths
-        const paths = this.svg.querySelectorAll('path');
+    clearSVG() {
+        const paths = this.svgCanvas.querySelectorAll('path:not([d="M 0 0 L 10 5 L 0 10 z"])');
         paths.forEach(p => p.remove());
     }
 
-    // Lấy toạ độ tâm của một element tương đối so với container
-    getCenterCoordinates(element) {
-        const containerRect = this.container.getBoundingClientRect();
-        const elementRect = element.getBoundingClientRect();
-
-        return {
-            x: elementRect.left - containerRect.left + (elementRect.width / 2),
-            y: elementRect.top - containerRect.top + (elementRect.height / 2)
-        };
-    }
-
-    drawConnection(el1, el2) {
-        const pos1 = this.getCenterCoordinates(el1);
-        const pos2 = this.getCenterCoordinates(el2);
-
-        // Calculate Bezier control points to make beautiful curves
-        const distanceY = Math.abs(pos2.y - pos1.y);
-        const controlOffset = distanceY * 0.4; // Đường cong dựa vào khoảng cách trục Y
-
-        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    createSVGPath(x1, y1, cx1, cy1, cx2, cy2, x2, y2) {
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        const d = `M ${x1} ${y1} C ${cx1} ${cy1}, ${cx2} ${cy2}, ${x2} ${y2}`;
         
-        // M -> di chuyển đến điểm 1
-        // C -> vẽ đường cong Bezier khối (C x1 y1, x2 y2, x y)
-        const d = `
-            M ${pos1.x} ${pos1.y} 
-            C ${pos1.x} ${pos1.y + controlOffset}, 
-              ${pos2.x} ${pos2.y - controlOffset}, 
-              ${pos2.x} ${pos2.y}
-        `;
-
-        path.setAttribute("d", d);
-        path.setAttribute("fill", "none");
-        path.setAttribute("stroke", "#005F73"); // Màu của primary-color
-        path.setAttribute("stroke-width", "2");
-        path.setAttribute("stroke-dasharray", "4,4"); // Nét đứt
-        path.setAttribute("marker-end", "url(#arrowhead)");
-        path.style.opacity = "0.7";
-
-        this.svg.appendChild(path);
+        path.setAttribute('d', d);
+        path.setAttribute('fill', 'none');
+        path.setAttribute('stroke', 'var(--accent-color)');
+        path.setAttribute('stroke-width', '2.5');
+        path.setAttribute('marker-end', 'url(#arrow)');
+        path.classList.add('connector-path');
+        
+        this.svgCanvas.appendChild(path);
     }
 
-    // Kết nối tất cả các phần tử trong 1 mảng theo thứ tự từ trên xuống (theo DOM)
-    connectElements(elementsArray) {
-        // Sort elements vertically just to be safe
-        const sorted = elementsArray.sort((a, b) => {
-            return a.getBoundingClientRect().top - b.getBoundingClientRect().top;
-        });
+    drawConnectionsForTag(tagId) {
+        this.clearSVG();
+        const activeBlocks = document.querySelectorAll(`.block.active`);
+        if (activeBlocks.length < 2) return;
 
-        for (let i = 0; i < sorted.length - 1; i++) {
-            this.drawConnection(sorted[i], sorted[i+1]);
+        const wrapperRect = this.boardWrapper.getBoundingClientRect();
+        const blocksArray = Array.from(activeBlocks).sort((a, b) => 
+            a.getBoundingClientRect().top - b.getBoundingClientRect().top
+        );
+
+        for (let i = 0; i < blocksArray.length - 1; i++) {
+            const startBlock = blocksArray[i];
+            const endBlock = blocksArray[i + 1];
+
+            const startRect = startBlock.getBoundingClientRect();
+            const endRect = endBlock.getBoundingClientRect();
+
+            const startX = startRect.left + (startRect.width / 2) - wrapperRect.left;
+            const startY = startRect.bottom - wrapperRect.top;
+
+            const endX = endRect.left + (endRect.width / 2) - wrapperRect.left;
+            const endY = endRect.top - wrapperRect.top;
+
+            const diffY = Math.abs(endY - startY);
+            
+            const cp1x = startX;
+            const cp1y = startY + (diffY * 0.4);
+            const cp2x = endX;
+            const cp2y = endY - (diffY * 0.4);
+
+            this.createSVGPath(startX, startY, cp1x, cp1y, cp2x, cp2y, endX, endY);
         }
     }
 }
 
-// Instantiate and attach to window
-window.svgDrawer = new SvgDrawer('svgCanvas');
+window.svgDrawer = new SvgDrawer('svg-canvas', 'board-wrapper');
