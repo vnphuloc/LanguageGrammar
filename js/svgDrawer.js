@@ -5,7 +5,7 @@ class SvgDrawer {
     }
 
     clearSVG() {
-        const paths = this.svgCanvas.querySelectorAll('path:not([d="M 0 1.5 L 10 5 L 0 8.5 z"])');
+        const paths = this.svgCanvas.querySelectorAll('path:not([d="M 0 0 L 10 5 L 0 10 z"])');
         paths.forEach(p => p.remove());
     }
 
@@ -18,7 +18,7 @@ class SvgDrawer {
         path.setAttribute('stroke', 'var(--accent-color)');
         path.setAttribute('stroke-width', '2.5');
         path.setAttribute('marker-end', 'url(#arrow)');
-        path.classList.add('connector-path');
+        path.classList.add('connector-path'); // CSS nhận style nét đứt ở đây
         
         this.svgCanvas.appendChild(path);
     }
@@ -44,8 +44,8 @@ class SvgDrawer {
             const startY = startRect.bottom - wrapperRect.top;
 
             const endX = endRect.left + (endRect.width / 2) - wrapperRect.left;
-            // Trừ 4px để mũi tên dính vừa đẹp vào viền khối, không bị lòi nét
-            const endY = endRect.top - wrapperRect.top - 4;
+            // Xóa đi đoạn -4px vì marker refX="9.5" đã làm phần mũi tên chạm chuẩn tới endRect.top
+            const endY = endRect.top - wrapperRect.top;
 
             const diffY = Math.abs(endY - startY);
             
