@@ -53,10 +53,13 @@
     <div class="grammar-board-wrapper" id="board-wrapper">
         <svg id="svg-canvas">
             <defs>
-                <!-- Mũi tên mượt mà, điểm nối (refX="9.5") đảm bảo không bị đâm xuyên -->
-                <marker id="arrow" viewBox="0 0 10 10" refX="9.5" refY="5"
-                    markerWidth="5" markerHeight="5" orient="auto">
-                    <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent-color)" />
+                <!-- Mũi tên được thiết kế lại: Thêm phần đuôi vươn về sau để lấp khoảng trống -->
+                <marker id="arrow" viewBox="0 0 24 10" refX="22" refY="5"
+                    markerWidth="6" markerHeight="6" orient="auto">
+                    <!-- Đuôi đặc lùi về sau (dài 14px) -->
+                    <line x1="0" y1="5" x2="14" y2="5" stroke="var(--accent-color)" stroke-width="1.5" />
+                    <!-- Đầu tam giác -->
+                    <path d="M 13 0 L 24 5 L 13 10 z" fill="var(--accent-color)" />
                 </marker>
             </defs>
         </svg>
