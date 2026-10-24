@@ -65,8 +65,8 @@ const closeTenseDetailBtn = document.getElementById('closeTenseDetailBtn');
 let timelineData = [];
 let transformData = [];
 let selectedVerb = VERB_SAMPLES[0];
-const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || window.matchMedia('(hover: none)').matches;
-let currentView = 'matrix';
+let selectedSubject = 'default'; // 'default', 'singular', 'plural'
+const isTouchDevice = window.matchMedia('(hover: none)').matches;let currentView = 'matrix';
 const helpModal = document.getElementById('helpModal');
 const helpToggleBtn = document.getElementById('helpToggleBtn');
 const closeHelpBtn = document.getElementById('closeHelpBtn');
@@ -203,43 +203,67 @@ async function init() {
         setupTransformView();
         renderTransformMatrix();
     }
-
-    function setupTransformView() {
+function setupTransformView() {
+        // 1. Khởi tạo danh sách Động từ mẫu
         const verbSelector = document.getElementById('verb-selector');
-        verbSelector.innerHTML = '';
-        VERB_SAMPLES.forEach(verb => {
-            const button = document.createElement('button');
-            button.type = 'button';
-            button.className = 'verb-choice';
-            button.dataset.verbId = verb.id;
-            button.textContent = verb.label;
-            button.addEventListener('click', () => {
-                selectedVerb = verb;
-                verbSelector.querySelectorAll('.verb-choice').forEach(item => item.classList.toggle('active', item === button));
-                renderTransformMatrix();
+        if (verbSelector) {
+            verbSelector.innerHTML = '';
+            VERB_SAMPLES.forEach(verb => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = `verb-choice${verb.id === selectedVerb.id ? ' active' : ''}`;
+                button.dataset.verbId = verb.id;
+                button.textContent = verb.label;
+                button.addEventListener('click', () => {
+                    selectedVerb = verb;
+                    verbSelector.querySelectorAll('.verb-choice').forEach(item => item.classList.toggle('active', item === button));
+                    renderTransformMatrix();
+                });
+                verbSelector.appendChild(button);
             });
-            verbSelector.appendChild(button);
-        });
-        verbSelector.firstElementChild.classList.add('active');
+        }
 
-        const transformDetailModal = document.getElementById('transformDetailModal');
-        document.getElementById('closeTransformDetailBtn').addEventListener('click', closeTransformDetail);
-        transformDetailModal.addEventListener('click', event => {
-            if (event.target === transformDetailModal) closeTransformDetail();
+        // 2. Khởi tạo sự kiện cho Chủ từ mẫu
+        const subjectChoices = document.querySelectorAll('#subject-selector .verb-choice');
+        subjectChoices.forEach(btn => {
+            // Đồng bộ trạng thái active ban đầu dựa trên selectedSubject
+            btn.classList.toggle('active', btn.dataset.subject === selectedSubject);
+
+            btn.addEventListener('click', () => {
+                subjectChoices.forEach(item => item.classList.remove('active'));
+                btn.classList.add('active');
+                selectedSubject = btn.dataset.subject;
+                renderTransformMatrix(); // Cập nhật ngay ma trận
+            });
         });
+
+        // 3. Sự kiện đóng Modal chi tiết
+        const transformDetailModal = document.getElementById('transformDetailModal');
+        const closeTransformBtn = document.getElementById('closeTransformDetailBtn');
+        if (closeTransformBtn) {
+            closeTransformBtn.onclick = closeTransformDetail;
+        }
+        if (transformDetailModal) {
+            transformDetailModal.onclick = (event) => {
+                if (event.target === transformDetailModal) closeTransformDetail();
+            };
+        }
     }
 
     function getTransformedVerb(tense) {
-        const verb = selectedVerb;
-        const forms = {
+    const verb = selectedVerb;
+    
+    // 1. Nếu chọn SỐ ÍT (He / She / It)
+    if (selectedSubject === 'singular') {
+        const formsSingular = {
             past_simple: `${verb.past} [V2]`,
-            past_continuous: `was/were ${verb.ing} [V-ing]`,
+            past_continuous: `was ${verb.ing} [V-ing]`,
             past_perfect: `had ${verb.participle} [V3]`,
             past_perfect_continuous: `had been ${verb.ing} [V-ing]`,
-            present_simple: `${verb.base} / ${verb.thirdPerson} [V1]`,
-            present_continuous: `is/am/are ${verb.ing} [V-ing]`,
-            present_perfect: `have/has ${verb.participle} [V3]`,
-            present_perfect_continuous: `have/has been ${verb.ing} [V-ing]`,
+            present_simple: `${verb.thirdPerson} [V1]`,
+            present_continuous: `is ${verb.ing} [V-ing]`,
+            present_perfect: `has ${verb.participle} [V3]`,
+            present_perfect_continuous: `has been ${verb.ing} [V-ing]`,
             future_simple: `will ${verb.base} [V1]`,
             future_continuous: `will be ${verb.ing} [V-ing]`,
             future_perfect: `will have ${verb.participle} [V3]`,
@@ -249,8 +273,53 @@ async function init() {
             future_in_past_perfect: `would have ${verb.participle} [V3]`,
             future_in_past_perfect_continuous: `would have been ${verb.ing} [V-ing]`
         };
-        return forms[tense.id] || '';
+        return formsSingular[tense.id] || '';
     }
+
+    // 2. Nếu chọn SỐ NHIỀU (They / We / You)
+    if (selectedSubject === 'plural') {
+        const formsPlural = {
+            past_simple: `${verb.past} [V2]`,
+            past_continuous: `were ${verb.ing} [V-ing]`,
+            past_perfect: `had ${verb.participle} [V3]`,
+            past_perfect_continuous: `had been ${verb.ing} [V-ing]`,
+            present_simple: `${verb.base} [V1]`,
+            present_continuous: `are ${verb.ing} [V-ing]`,
+            present_perfect: `have ${verb.participle} [V3]`,
+            present_perfect_continuous: `have been ${verb.ing} [V-ing]`,
+            future_simple: `will ${verb.base} [V1]`,
+            future_continuous: `will be ${verb.ing} [V-ing]`,
+            future_perfect: `will have ${verb.participle} [V3]`,
+            future_perfect_continuous: `will have been ${verb.ing} [V-ing]`,
+            future_in_past_simple: `would ${verb.base} [V1]`,
+            future_in_past_continuous: `would be ${verb.ing} [V-ing]`,
+            future_in_past_perfect: `would have ${verb.participle} [V3]`,
+            future_in_past_perfect_continuous: `would have been ${verb.ing} [V-ing]`
+        };
+        return formsPlural[tense.id] || '';
+    }
+
+    // 3. MẶC ĐỊNH (Hiển thị dạng tổng quát như hiện tại)
+    const formsDefault = {
+        past_simple: `${verb.past} [V2]`,
+        past_continuous: `was/were ${verb.ing} [V-ing]`,
+        past_perfect: `had ${verb.participle} [V3]`,
+        past_perfect_continuous: `had been ${verb.ing} [V-ing]`,
+        present_simple: `${verb.base} / ${verb.thirdPerson} [V1]`,
+        present_continuous: `is/am/are ${verb.ing} [V-ing]`,
+        present_perfect: `have/has ${verb.participle} [V3]`,
+        present_perfect_continuous: `have/has been ${verb.ing} [V-ing]`,
+        future_simple: `will ${verb.base} [V1]`,
+        future_continuous: `will be ${verb.ing} [V-ing]`,
+        future_perfect: `will have ${verb.participle} [V3]`,
+        future_perfect_continuous: `will have been ${verb.ing} [V-ing]`,
+        future_in_past_simple: `would ${verb.base} [V1]`,
+        future_in_past_continuous: `would be ${verb.ing} [V-ing]`,
+        future_in_past_perfect: `would have ${verb.participle} [V3]`,
+        future_in_past_perfect_continuous: `would have been ${verb.ing} [V-ing]`
+    };
+    return formsDefault[tense.id] || '';
+}
 
     function renderTransformMatrix() {
         const grid = document.getElementById('transform-grid');

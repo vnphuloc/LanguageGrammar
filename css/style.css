@@ -476,3 +476,48 @@ select { appearance: none; width: 100%; padding: 1rem 1.5rem; font-size: 1rem; f
 body:not(.show-labels) .tense-sub {
     display: none !important;
 }
+.view-switcher {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px;
+}
+
+.view-tab {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .view-tab {
+        flex: 1 1 auto;
+        font-size: 0.78rem;
+        padding: 6px 10px;
+        text-align: center;
+    }
+}
+.transform-selector-panel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.selector-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .selector-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        width: 100%;
+    }
+}
