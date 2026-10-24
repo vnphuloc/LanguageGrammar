@@ -132,3 +132,60 @@ select { appearance: none; width: 100%; max-width: 600px; padding: 1rem 1.5rem; 
 .modal-word { font-size: 1.8rem; color: var(--accent-color); margin-bottom: 0.2rem; }
 .modal-phonetic { font-size: 1rem; color: #666; font-style: italic; margin-bottom: 1.5rem; }
 .modal-explanation-text { font-size: 1rem; line-height: 1.6; color: #333; }
+/* ================= RESPONSIVE DI ĐỘNG (MOBILE) ================= */
+@media (max-width: 768px) {
+    :root {
+        --block-font-size: 0.95rem; /* Tự động thu nhỏ cỡ chữ khối từ trên mobile */
+    }
+
+    body {
+        padding: 1rem 0.5rem;
+    }
+
+    header {
+        margin-top: 2rem;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    /* Đẩy Tên ngôn ngữ lên trên, các khối từ nằm ở dưới */
+    .lang-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px dashed #e0e0e0; /* Thêm đường kẻ mờ chia tách các ngôn ngữ */
+    }
+    
+    .lang-row:last-child {
+        border-bottom: none;
+    }
+
+    .lang-label {
+        min-width: 100%;
+        margin-bottom: 0.2rem;
+    }
+
+    /* Ép các chữ bên trong khối không được tự động rớt dòng (Ví dụ: "một quả táo" sẽ luôn nằm trên 1 hàng ngang) */
+    .block-main {
+        white-space: nowrap;
+    }
+
+    .block {
+        padding: 0.4rem 0.6rem;
+    }
+
+    .grammar-board-wrapper {
+        padding: 1.5rem 1rem;
+    }
+
+    /* Thu nhỏ và dời nút bánh răng lên cao góc phải để không che khuất chữ */
+    .settings-wrapper {
+        top: 0.5rem;
+        right: 0.5rem;
+        transform: scale(0.75); 
+        transform-origin: top right;
+    }
+}
