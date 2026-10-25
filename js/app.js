@@ -6,11 +6,11 @@ const COLOR_STORAGE_KEY = 'syntax_matrix_colors';
 const TIMELINE_DATA_URL = 'data/tenses_timeline.json';
 const TRANSFORM_DATA_URL = 'data/verb_transformations.json';
 const VERB_SAMPLES = [
-    { id: 'code', label: 'code', base: 'code', thirdPerson: 'codes', past: 'coded', participle: 'coded', ing: 'coding' },
-    { id: 'write', label: 'write', base: 'write', thirdPerson: 'writes', past: 'wrote', participle: 'written', ing: 'writing' },
-    { id: 'study', label: 'study', base: 'study', thirdPerson: 'studies', past: 'studied', participle: 'studied', ing: 'studying' },
-    { id: 'eat', label: 'eat', base: 'eat', thirdPerson: 'eats', past: 'ate', participle: 'eaten', ing: 'eating' },
-    { id: 'go', label: 'go', base: 'go', thirdPerson: 'goes', past: 'went', participle: 'gone', ing: 'going' }
+    { id: 'code', label: 'code', base: 'code', thirdPerson: 'codes', past: 'coded', participle: 'coded', ing: 'coding', object: 'the app', timeSignal: 'today' },
+    { id: 'write', label: 'write', base: 'write', thirdPerson: 'writes', past: 'wrote', participle: 'written', ing: 'writing', object: 'the report', timeSignal: 'this morning' },
+    { id: 'study', label: 'study', base: 'study', thirdPerson: 'studies', past: 'studied', participle: 'studied', ing: 'studying', object: 'English', timeSignal: 'for two hours' },
+    { id: 'eat', label: 'eat', base: 'eat', thirdPerson: 'eats', past: 'ate', participle: 'eaten', ing: 'eating', object: 'lunch', timeSignal: 'right now' },
+    { id: 'go', label: 'go', base: 'go', thirdPerson: 'goes', past: 'went', participle: 'gone', ing: 'going', object: 'home', timeSignal: 'by 6 p.m.' }
 ];
 const DEFAULT_COLORS = {
     '--c-subj-bg': '#D0E1FD',
@@ -344,34 +344,40 @@ function setupTransformView() {
     return formsDefault[tense.id] || '';
 }
 
-    function getTransformExample(tense) {
-        if (selectedSubject === 'default') return '';
-
-        const verb = selectedVerb;
+    function generateDynamicExample(subjectType, tenseId, verbObj) {
         const subject = {
             i: 'I',
             singular: 'He',
-            plural: 'They'
-        }[selectedSubject];
+            plural: 'They',
+            default: 'They'
+        }[subjectType] || 'They';
+        const isSingular = subjectType === 'singular';
+        const isFirstPerson = subjectType === 'i';
+        const isSingularOrFirstPerson = isSingular || isFirstPerson;
+        const auxiliary = isFirstPerson ? 'am' : isSingular ? 'is' : 'are';
+        const perfectAuxiliary = isSingular ? 'has' : 'have';
+        const object = verbObj.object;
+        const timeSignal = verbObj.timeSignal;
+
         const forms = {
-            past_simple: `${subject} ${verb.past} yesterday.`,
-            past_continuous: `${subject} ${selectedSubject === 'singular' || selectedSubject === 'i' ? 'was' : 'were'} ${verb.ing} when you called.`,
-            past_perfect: `${subject} had ${verb.participle} the feature before the demo.`,
-            past_perfect_continuous: `${subject} had been ${verb.ing} for hours before the bug appeared.`,
-            present_simple: `${subject} ${selectedSubject === 'singular' ? verb.thirdPerson : verb.base} every day.`,
-            present_continuous: `${subject} ${selectedSubject === 'i' ? 'am' : selectedSubject === 'singular' ? 'is' : 'are'} ${verb.ing} right now.`,
-            present_perfect: `${subject} ${selectedSubject === 'singular' ? 'has' : 'have'} ${verb.participle} this feature.`,
-            present_perfect_continuous: `${subject} ${selectedSubject === 'singular' ? 'has' : 'have'} been ${verb.ing} for two hours.`,
-            future_simple: `${subject} will ${verb.base} tomorrow.`,
-            future_continuous: `${subject} will be ${verb.ing} at 8 p.m.`,
-            future_perfect: `${subject} will have ${verb.participle} the feature by Friday.`,
-            future_perfect_continuous: `${subject} will have been ${verb.ing} for two hours by noon.`,
-            future_in_past_simple: `${subject} would ${verb.base} the fix.`,
-            future_in_past_continuous: `${subject} would be ${verb.ing} late.`,
-            future_in_past_perfect: `${subject} would have ${verb.participle} it by Monday.`,
-            future_in_past_perfect_continuous: `${subject} would have been ${verb.ing} for hours.`
+            past_simple: `${subject} ${verbObj.past} ${object} yesterday.`,
+            past_continuous: `${subject} ${isSingularOrFirstPerson ? 'was' : 'were'} ${verbObj.ing} ${object} when you called.`,
+            past_perfect: `${subject} had ${verbObj.participle} ${object} before the demo.`,
+            past_perfect_continuous: `${subject} had been ${verbObj.ing} ${object} for hours before the bug appeared.`,
+            present_simple: `${subject} ${isSingular ? verbObj.thirdPerson : verbObj.base} ${object} every day.`,
+            present_continuous: `${subject} ${auxiliary} ${verbObj.ing} ${object} ${timeSignal}.`,
+            present_perfect: `${subject} ${perfectAuxiliary} ${verbObj.participle} ${object}.`,
+            present_perfect_continuous: `${subject} ${perfectAuxiliary} been ${verbObj.ing} ${object} ${timeSignal}.`,
+            future_simple: `${subject} will ${verbObj.base} ${object} tomorrow.`,
+            future_continuous: `${subject} will be ${verbObj.ing} ${object} at 8 p.m.`,
+            future_perfect: `${subject} will have ${verbObj.participle} ${object} by Friday.`,
+            future_perfect_continuous: `${subject} will have been ${verbObj.ing} ${object} for hours by noon.`,
+            future_in_past_simple: `${subject} would ${verbObj.base} ${object}.`,
+            future_in_past_continuous: `${subject} would be ${verbObj.ing} ${object} later.`,
+            future_in_past_perfect: `${subject} would have ${verbObj.participle} ${object} by Monday.`,
+            future_in_past_perfect_continuous: `${subject} would have been ${verbObj.ing} ${object} for hours.`
         };
-        return forms[tense.id] || '';
+        return forms[tenseId] || '';
     }
 
     function renderTransformMatrix() {
@@ -398,8 +404,8 @@ function setupTransformView() {
                 cell.dataset.col = String(colIndex);
                 cell.dataset.tenseId = tense.id;
                 cell.dataset.time = time;
-                const example = getTransformExample(tense);
-                cell.innerHTML = `<h3>${tense.title_en}</h3><span class="cell-vi">${tense.title_vi}</span><code class="transform-formula">${tense.formula}</code><strong class="transform-real-form">${formatTransformedVerb(getTransformedVerb(tense))}</strong>${example ? `<span class="transform-example">${example}</span>` : ''}<span class="usage-badge">Thông dụng: ${tense.ratings.daily.score}/10</span>`;
+                const example = generateDynamicExample(selectedSubject, tense.id, selectedVerb);
+                cell.innerHTML = `<h3>${tense.title_en}</h3><span class="cell-vi">${tense.title_vi}</span><code class="transform-formula">${tense.formula}</code><strong class="transform-real-form">${formatTransformedVerb(getTransformedVerb(tense))}</strong>${example ? `<em class="transform-example">${example}</em>` : ''}<span class="usage-badge">Thông dụng: ${tense.ratings.daily.score}/10</span>`;
                 cell.addEventListener('mouseenter', () => handleTransformHover(cell));
                 cell.addEventListener('focus', () => handleTransformHover(cell));
                 cell.addEventListener('mouseleave', clearTransformHover);
